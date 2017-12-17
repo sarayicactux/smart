@@ -26,4 +26,8 @@ class url extends Model
     {
         return $this->hasMany('App\Models\transact');
     }
+    public function cardps()
+    {
+        return $this->hasMany('App\Models\cardp');
+    }
 }

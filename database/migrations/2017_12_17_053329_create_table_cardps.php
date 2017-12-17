@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTransactsTable extends Migration
+class CreateTableCardps extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateTransactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transacts', function (Blueprint $table) {
+        Schema::create('cardps', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('amount');
             $table->string('tran_id')->unique();
             $table->string('tracking_code')->unique();
             $table->string('pay_time');
             $table->string('pay_date');
-            $table->smallInteger('pay_type');
+            $table->smallInteger('last_status')->default(0);
             $table->integer('url_id')->unsigned();
             $table->foreign('url_id')->references('id')->on('urls');
             $table->integer('customer_id')->unsigned();
@@ -38,6 +38,6 @@ class CreateTransactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transacts');
+        Schema::dropIfExists('cardps');
     }
 }

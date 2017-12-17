@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class order extends Model
+class cardp extends Model
 {
     public function url()
     {
@@ -14,12 +14,8 @@ class order extends Model
     {
         return $this->belongsTo('App\Models\customer');
     }
-    public function transact()
+    public function order()
     {
-        return $this->hasOne('App\Models\transact');
-    }
-    public function cardp()
-    {
-        return $this->hasOne('App\Models\cardp');
+        return $this->belongsTo('App\Models\order');
     }
 }
