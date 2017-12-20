@@ -4,8 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class partner extends Model
 {
+    protected $fillable = ['name', 'family', 'email', 'password','tel','mobile','pro_id','city_id','n_code','card_num'];
+    protected $guarded = ['id','updated_at','created_at'];
     public function urls()
     {
         return $this->hasMany('App\Models\url');

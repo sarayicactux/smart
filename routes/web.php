@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/partners', 'IndexController@index');
+Route::post('/cities', 'IndexController@cities');
+Route::post('/checkEmail', 'IndexController@checkEmail');
+Route::post('/checkMelicode', 'IndexController@checkMelicode');
+Route::post('/regPartner', 'PartnerController@regPartner');
+
+

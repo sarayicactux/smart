@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartnersTable extends Migration
+class CreateProCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,10 @@ class CreatePartnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('partners', function (Blueprint $table) {
+        Schema::create('pro_cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('family');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('card_num')->unique();
-            $table->string('tel');
-            $table->string('mobile');
             $table->integer('pro_id');
-            $table->integer('city_id');
-            $table->string('n_code');
             $table->timestamps();
         });
     }
@@ -36,6 +28,6 @@ class CreatePartnersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partners');
+        Schema::dropIfExists('pro_cities');
     }
 }
