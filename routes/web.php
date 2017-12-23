@@ -23,5 +23,6 @@ Route::post('/cities', 'IndexController@cities');
 Route::post('/checkEmail', 'IndexController@checkEmail');
 Route::post('/checkMelicode', 'IndexController@checkMelicode');
 Route::post('/regPartner', 'PartnerController@regPartner');
+Route::post('/loginPartner', 'PartnerController@loginPartner');
 
 

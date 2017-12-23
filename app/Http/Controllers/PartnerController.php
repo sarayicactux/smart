@@ -16,11 +16,25 @@ use App\Models\cardp;
 class PartnerController extends Controller
 {
         public function regPartner(Request $request){
-                //$partner = new partner;
                 $partner = partner::create($request->all());
             session ( [
                 'partner' => $partner
             ] );
 
         }
+    public function loginPartner(Request $request){
+        $buff = partner::where('email',$request->email)
+            ->where('password',$request->password)
+            ->get();
+        $log = false;
+        if (count($buff) == 1){
+            session ( [
+                'partner' => $buff[0]
+            ] );
+            $log = true;
+
+        }
+
+        return array('status'=>$log);
+    }
 }

@@ -310,6 +310,57 @@ function regPartner() {
 		
 			}
 }
+function loginPartner() {
+    var msg = '';
+    var emC = validate($('#emailLogin').val());
+    if ( $('#emailLogin').val() == '' ){
+        $('#emailLogin').focus();
+        msg = 'نشانی ایمیل وارد نشده';
+    }
+    else if ( emC == false ){
+        $('#emailLogin').focus();
+        msg = 'نشانی ایمیل وارد شده، نامعتبر است';
+    }
+    else if ( $('#passwordLogin').val() == '' ){
+        $('#passwordLogin').focus();
+        msg = 'رمز عبور وارد نشده';
+    }
+    if ( msg != '' ){
+        $('#m_ch1').html(msg);
+
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/loginPartner", {
+
+                email        : $('#emailLogin').val(),
+                password     : $('#passwordLogin').val(),
+                _token       : $('#_token').val(),
+
+
+
+            },
+            function(data){
+                if ( data.status ){
+                    document.location = "/partners";
+                }
+                else {
+                    $('#m_ch1').html('ورود ناموفق، نام کاربری و رمز عبور صحیح نیست');
+                    $('#bg').fadeOut(100);
+                    $('#wait').fadeOut(100);
+
+                }
+
+            }, 'json');
+
+
+
+
+    }
+}
 function searchDec(){
   			$('#bg').fadeIn(100);
 			$('#wait').fadeIn(100);

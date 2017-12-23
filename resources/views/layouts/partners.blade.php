@@ -62,24 +62,24 @@
 <body>
 <div class="">
     <div class="container">
-{{ session('partner')->email }}
-        <div class="text-left today">امروز :{{  $date }} </div>
-        <div  align="left"><br /><br />
+<br/>
+        <div class="text-left today" style="color: #ffffff">امروز :{{  $date }} </div>
+        <div  align="left">
 
 
             <ul class="nav" style="left:35px; position:absolute;">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style="color:#FF0000"> {{ session ('admin')['name'].' '.session ('admin')['family'] }} </span>خوش آمدید<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style="color:#ffffff"> {{ session ('partner')->name.' '.session ('partner')->family }} خوش آمدید<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li ><a href="#">تغییر رمز</a></li>
-                        <li ><a href="logOut.php" >خروج</a></li>
+                        <li ></li>
 
                     </ul>
                 </li>
             </ul>
         </div>
         <br /><br />
-        <br /><br />
+        <br />
 
 
     </div>
@@ -94,13 +94,14 @@
 
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">متوفیان <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li onclick="postMenus('decedent');"><a href="#">ثبت متوفی جدید</a></li>
-                        <li onclick="postMenus('decedent/decList');" ><a href="#">لیست متوفیان</a></li>
-
-                    </ul>
+                    <a href="#" onclick="" >نشانی وب</a>
                 </li>
+                <li class="dropdown">
+
+                    <a href="logOut.php" >خروج</a>
+
+                </li>
+
 
 
 

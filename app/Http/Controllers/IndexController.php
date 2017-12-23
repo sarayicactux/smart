@@ -12,6 +12,7 @@ class IndexController extends Controller
 {
     public function index()
     {
+        //Session::forget('partner');
         if ( Session::has('partner') ){
             $pros = pro_city::where('pro_id',0)->get();
             $date = Jdate::medate();

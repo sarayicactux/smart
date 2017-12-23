@@ -78,7 +78,7 @@
             <td width="50%" style="padding: 10px;">متن<br/>
                 <div id="btns" class="btns">
                     <button onclick="$('#btns').slideUp(300);$('#regFrm').slideDown(300)" class="btn btn-primary">ثبت نام</button>
-                    <button onclick="" class="btn btn-primary">ورود</button>
+                    <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ورود</button>
                 </div>
                 <div id="regFrm" class="Frms" style="display: none">
 
@@ -242,7 +242,46 @@ checkEmail(this.value)"   id="email" type="text" />
                     </div>
 
 
-                <div id="loginFrm" class="Frms" style="display: none"></div>
+                <div id="loginFrm" class="Frms" style="display: none">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-8"  style="padding:2px">نشانی ایمیل </label>
+                                <div class="col-md-10">
+                                    <input class="form-control input-sm" maxlength="60" dir="ltr"  name="emailLogin" id="emailLogin" type="text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-8"  style="padding:2px">رمز عبور</label>
+                                <div class="col-md-10">
+                                    <input class="form-control input-sm" maxlength="60" dir="ltr"  name="passwordLogin"   id="passwordLogin" type="password" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <br/>
+                            <button onclick="$('#loginFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">انصراف</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button onclick="loginPartner()" class="btn btn-primary">ورود</button>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <br/>
+
+                            <div class="form-section caption-subject font-red-sunglo" id="m_ch1" style="color:#ff1522"><br/></div>
+                        </div>
+
+                    </div>
+                </div>
 
 
             </td>
