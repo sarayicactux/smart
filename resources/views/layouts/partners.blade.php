@@ -94,11 +94,20 @@
 
 
                 <li class="dropdown">
-                    <a href="#" onclick="" >نشانی وب</a>
+                    <a href="#" onclick="postMenus('/urls');" >نشانی وب</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" onclick="postMenus('/visits');" > بازدیدها</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" onclick="postMenus('/transActs');" > تراکنش ها</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" onclick="postMenus('/payRq');" >درخواست واریز</a>
                 </li>
                 <li class="dropdown">
 
-                    <a href="logOut.php" >خروج</a>
+                    <a href="/logOut" >خروج</a>
 
                 </li>
 

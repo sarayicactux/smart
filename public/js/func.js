@@ -106,7 +106,7 @@ function postMenus(url){
 	$('html, body').animate({ scrollTop: 0 }, 1000);
 	$('#bg').fadeIn(100);
 	$('#wait').fadeIn(100);
-	$.post(url, { 
+	$.post('index.php/'+url, {
 		   _token           : $('#_token').val(),
 			   },
 		 function(data){ 
@@ -189,6 +189,44 @@ function ctrlAct(id,ctrlAct){
 						 }//  2pm
 					 });
 			}
+function urls(id,name,description,url){
+    var msg = '';
+    if ( name == '' ){
+
+        msg = ' نام وارد نشده';
+    }
+    else if ( url == '' ){
+
+        msg = ' نشانی وارد نشده';
+    }
+
+    if ( msg != '' ){
+        $('#err_msg').html(msg);
+        $('#bg').fadeIn(100,function(){
+            $('#alerts').fadeIn(200);
+        });
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/urlsAddEdit", {
+                name		:	name,
+                url			:	url,
+                description	:	description,
+                id			:	id,
+                _token  : $('#_token').val(),
+            },
+            function(data){
+                $('#AdminDiv').html(data);
+                $("body").removeClass("modal-open");
+                $('.modal-backdrop').fadeOut(100);
+                $('#bg').fadeOut(100);
+                $('#wait').fadeOut(100);
+            });
+    }
+}
 function cities(id){
     //$('#wait').fadeIn(100);
     $.post("index.php/cities", {

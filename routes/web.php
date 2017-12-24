@@ -18,11 +18,21 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logOut',function (){Session::forget('partner');
+return redirect('/home');});
 Route::get('/partners', 'IndexController@index');
 Route::post('/cities', 'IndexController@cities');
 Route::post('/checkEmail', 'IndexController@checkEmail');
 Route::post('/checkMelicode', 'IndexController@checkMelicode');
 Route::post('/regPartner', 'PartnerController@regPartner');
 Route::post('/loginPartner', 'PartnerController@loginPartner');
+Route::group(['middleware' => ['checkPartner']], function () {
+    Route::post('/urls', 'PartnerController@urlsLs');
+    Route::post('/urlsAddEdit', 'PartnerController@urlsAddEdit');
+    Route::post('/partners/visits', 'PartnerController@visitsLow');
+    Route::post('/partners/transActs', 'PartnerController@transActsLow');
+    Route::post('/partners/orders', 'PartnerController@ordersLow');
+});
+
 
 

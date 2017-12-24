@@ -831,5 +831,21 @@ public static  function echo_date2($intDate){
 	$day   = substr($intDate,6,2);
 	return ($year.'/'.$month.'/'.$day);
 }
-
+    public static  function echoNum($num){
+        $arr = str_split($num);
+        $snum = '';
+        $j    = 1;
+        for ( $i=count($arr)-1;$i>=0;$i-- ) {
+            if ( $j != 4 ){
+                $snum = $arr[$i].$snum;
+                $j++;
+            }
+            else {
+                $snum = $arr[$i].','.$snum;
+                $j=2;
+            }
+        }
+        return html::fn($snum);
+    }
 }
+
