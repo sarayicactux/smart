@@ -19,7 +19,7 @@
                 <tr align="center">
                     <td >{{ Jdate::fn($i)}}</td>
                     <td >{{Jdate::fn($order->count)}}</td>
-                    <td >{{Jdate::fn(Verta::instance($order->created_at))}}</td>
+                    <td dir="ltr" >{{Jdate::fn(Verta::instance($order->created_at))}}</td>
                 </tr>
             @endforeach
         </table>

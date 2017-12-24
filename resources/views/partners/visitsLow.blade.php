@@ -17,7 +17,7 @@
                 <?php $i++;?>
                 <tr align="center">
                     <td >{{ Jdate::fn($i)}}</td>
-                    <td >{{Jdate::fn(Verta::instance($visit->created_at))}}</td>
+                    <td dir="ltr" >{{Jdate::fn(Verta::instance($visit->created_at))}}</td>
                 </tr>
             @endforeach
         </table>

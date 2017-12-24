@@ -36,7 +36,7 @@ $('#description').val('');
         <tr align="center">
 <td >{{ Jdate::fn($i)}}</td>
 <td >{{$url->name}}</td>
-<td >{{$url->url}}</td>
+<td dir="ltr" >{{$url->url}}</td>
 <td >{{$url->description}}</td>
 <td >{{Jdate::fn(Verta::instance($url->created_at))}}</td>
 <td style="cursor:pointer"   data-toggle="modal" data-target="#modalLayer" onclick="ctrlAct('{{ $url->id}}','partners/visits')">

@@ -19,7 +19,7 @@
                 <tr align="center">
                     <td >{{ Jdate::fn($i)}}</td>
                     <td >{{Jdate::echoNum($transact->amount)}}</td>
-                    <td >{{Jdate::fn(Verta::instance($transact->created_at))}}</td>
+                    <td dir="ltr" >{{Jdate::fn(Verta::instance($transact->created_at))}}</td>
                 </tr>
             @endforeach
         </table>
