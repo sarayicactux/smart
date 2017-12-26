@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\customer;
 use Illuminate\Http\Request;
 use App\Helpers\Jdate;
 use App\Models\pro_city;
@@ -14,9 +15,8 @@ class IndexController extends Controller
     {
         //Session::forget('partner');
         if ( Session::has('partner') ){
-            $pros = pro_city::where('pro_id',0)->get();
             $date = Jdate::medate();
-            return view('layouts.partners',array('date'=>Jdate::fn($date['date4']),'pros'=>$pros));
+            return view('layouts.partners',array('date'=>Jdate::fn($date['date4'])));
         }
         else {
             $pros = pro_city::where('pro_id',0)->orderBy('id','ASC')->get();
@@ -37,6 +37,13 @@ class IndexController extends Controller
         $email = partner::where('email',$request->email)->exists();
         $ret = 1;
         if ( $email ) $ret = 0;
+        return $ret;
+
+    }
+    public function checkMobile(Request $request){
+        $mobile = customer::where('mobile',$request->mobile)->exists();
+        $ret = 1;
+        if ( $mobile ) $ret = 0;
         return $ret;
 
     }

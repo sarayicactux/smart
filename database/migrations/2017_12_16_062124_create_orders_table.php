@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('prod_id')->default(1);
             $table->string('addr');
+            $table->string('p_code');
             $table->string('tel');
             $table->integer('count');
             $table->string('order_time');

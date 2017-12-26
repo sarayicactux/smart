@@ -32,7 +32,8 @@ $('#description').val('');
 </tr>
     <?php $i=0;?>
     @foreach ($urls as $url )
-        <?php $i++;?>
+        <?php $i++;
+        ?>
         <tr align="center">
 <td >{{ Jdate::fn($i)}}</td>
 <td >{{$url->name}}</td>

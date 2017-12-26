@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class customer extends Model
 {
+
+    protected $fillable = ['name', 'family', 'password','tel','mobile','pro_id','city_id','url_id','addr'];
+    protected $guarded = ['id','updated_at','created_at'];
     public function url()
     {
         return $this->belongsTo('App\Models\url');

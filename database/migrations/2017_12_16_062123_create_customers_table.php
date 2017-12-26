@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->smallInteger('pro_id');
             $table->smallInteger('city_id');
             $table->text('addr');
+            $table->string('p_code');
             $table->integer('url_id')->unsigned();
             $table->foreign('url_id')->references('id')->on('urls');
             $table->timestamps();

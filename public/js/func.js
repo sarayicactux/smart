@@ -257,6 +257,21 @@ function checkEmail(email){
             //  2pm
         },"json");
 }
+function checkMobile(mobile){
+    //$('#wait').fadeIn(100);
+    $.post("index.php/checkMobile", {
+            mobile     : mobile,
+            _token : $('#_token').val(),
+        },
+        function(data){
+
+
+
+            $('#mobileC').val(data);
+            // $('#wait').fadeOut(100);
+            //  2pm
+        },"json");
+}
 function regPartner() {
 			var msg = '';
 			var emC = validate($('#email').val());
@@ -348,6 +363,73 @@ function regPartner() {
 		
 			}
 }
+function regCustomer() {
+    var msg = '';
+    var emC = validate($('#email').val());
+    if ( $('#name').val() == '' ){
+        $('#name').focus();
+        msg = 'نام وارد نشده';
+    }
+    else if ( $('#family').val() == '' ){
+        $('#family').focus();
+        msg = 'نام خانوادگی وارد نشده';
+    }
+    else if ( $('#tel').val() == '' ){
+        $('#tel').focus();
+        msg = 'شماره تلفن ثابت وارد نشده';
+    }
+    else if ( $('#mobile').val() == '' ){
+        $('#mobile').focus();
+        msg = 'شماره تلفن همراه وارد نشده';
+    }
+    else if ( $('#mobileC').val() == '0' ){
+        msg = 'شماره تلفن همراه وارد شده، صحیح نبوده یا تکراری است';
+    }
+    else if ( $('#password').val() == '' ){
+        $('#password').focus();
+        msg = 'رمز عبور وارد نشده';
+    }
+    else if ( $('#addr').val() == '' ){
+        $('#addr').focus();
+        msg = 'نشانی وارد نشده';
+    }
+    else if ( $('#p_code').val() == '' ){
+        $('#p_code').focus();
+        msg = 'کدپستی وارد نشده';
+    }
+	if ( msg != '' ){
+        $('#m_ch').html(msg);
+
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/regCustomer", {
+                name         : $('#name').val(),
+                family       : $('#family').val(),
+                pro_id       : $('#pro_id').val(),
+                city_id      : $('#city_id').val(),
+              	password     : $('#password').val(),
+                tel			 : $('#tel').val(),
+                addr		 : $('#addr').val(),
+                mobile		 : $('#mobile').val(),
+                _token       : $('#_token').val(),
+
+
+
+            },
+            function(data){
+                document.location = "/";
+
+            });
+
+
+
+
+    }
+}
 function loginPartner() {
     var msg = '';
     var emC = validate($('#emailLogin').val());
@@ -387,6 +469,104 @@ function loginPartner() {
                 }
                 else {
                     $('#m_ch1').html('ورود ناموفق، نام کاربری و رمز عبور صحیح نیست');
+                    $('#bg').fadeOut(100);
+                    $('#wait').fadeOut(100);
+
+                }
+
+            }, 'json');
+
+
+
+
+    }
+}
+function loginCustomer() {
+    var msg = '';
+    if ( $('#mobileLogin').val() == '' ){
+        $('#mobileLogin').focus();
+        msg = 'شماره تلفن همراه  وارد نشده';
+    }
+
+    else if ( $('#passwordLogin').val() == '' ){
+        $('#passwordLogin').focus();
+        msg = 'رمز عبور وارد نشده';
+    }
+    if ( msg != '' ){
+        $('#m_ch1').html(msg);
+
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/loginCustomer", {
+
+                mobile       : $('#mobileLogin').val(),
+                password     : $('#passwordLogin').val(),
+                _token       : $('#_token').val(),
+
+
+
+            },
+            function(data){
+                if ( data.status ){
+                    document.location = "/";
+                }
+                else {
+                    $('#m_ch1').html('ورود ناموفق، نام کاربری و رمز عبور صحیح نیست');
+                    $('#bg').fadeOut(100);
+                    $('#wait').fadeOut(100);
+
+                }
+
+            }, 'json');
+
+
+
+
+    }
+}
+function regPcard() {
+    var msg = '';
+    if ( $('#mobileLogin1').val() == '' ){
+        $('#mobileLogin1').focus();
+        msg = ' شماره تلفن همراه وارد نشده';
+    }
+
+    else if ( $('#passwordLogin').val() == '' ){
+        $('#passwordLogin').focus();
+        msg = 'رمز عبور وارد نشده';
+    }
+    else if ( $('#tran_id').val() == '' ){
+        $('#tran_id').focus();
+        msg = 'کدرهگیری - شماره ارجاع وارد نشده';
+    }
+    if ( msg != '' ){
+        $('#m_ch2').html(msg);
+
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/loginCustomer", {
+
+                mobile       : $('#mobileLogin').val(),
+                password     : $('#passwordLogin').val(),
+                _token       : $('#_token').val(),
+
+
+
+            },
+            function(data){
+                if ( data.status ){
+                    document.location = "/regPcard";
+                }
+                else {
+                    $('#m_ch2').html('ورود ناموفق، نام کاربری و رمز عبور صحیح نیست');
                     $('#bg').fadeOut(100);
                     $('#wait').fadeOut(100);
 

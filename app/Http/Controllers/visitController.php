@@ -7,11 +7,18 @@ use App\Models\partner;
 use App\Models\url;
 use App\Models\visit;
 use App\Helpers\Jdate;
+use App\Models\pro_city;
+use Session;
 use Verta;
 class visitController extends Controller
 {
     public function index(Request $request){
+        Session::forget('customer');
             $v = verta();
+            session([
+                'url_id'=>'1',
+                'url_ref'=>'anySite'
+            ]);
             if (isset($_SERVER['HTTP_REFERER'])){
 
                 $url = url::where('url','like',$_SERVER['HTTP_REFERER'])->get();
@@ -23,8 +30,43 @@ class visitController extends Controller
                         'visit_time'=>$v->hour.':'.$v->minute.':'.$v->second,
                         'visit_date'=>$v->year.'/'.$v->month.'/'.$v->day
                     ]);
+
+                }
+                else {
+                    $url = url::find(1);
+                    $url->visits()->create([
+                        'url_ref'   =>$_SERVER['HTTP_REFERER'],
+                        'visit_time'=>$v->hour.':'.$v->minute.':'.$v->second,
+                        'visit_date'=>$v->year.'/'.$v->month.'/'.$v->day
+                    ]);
+                    session([
+                        'url_id'=>$url->id,
+                        'url_ref'=>$_SERVER['HTTP_REFERER']
+                    ]);
+
                 }
             }
+            else {
+                $url = url::find(1);
+                $url->visits()->create([
+                    'url_ref'   =>'anySite',
+                    'visit_time'=>$v->hour.':'.$v->minute.':'.$v->second,
+                    'visit_date'=>$v->year.'/'.$v->month.'/'.$v->day,
+                ]);
+
+
+            }
+        if ( Session::has('customer') ){
+            $date = Jdate::medate();
+            return view('layouts.customer',array('date'=>Jdate::fn($date['date4'])));
+        }
+        else {
+            $pros = pro_city::where('pro_id',0)->orderBy('id','ASC')->get();
+            $cities = pro_city::where('pro_id',1)->orderBy('id','ASC')->get();
+            $date = Jdate::medate();
+            return view('layouts.index',array('date'=>Jdate::fn($date['date4']),'pros'=>$pros,'cities'=>$cities));
+
+        }
 
     }
 }
