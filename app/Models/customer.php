@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class customer extends Model
 {
 
-    protected $fillable = ['name', 'family', 'password','tel','mobile','pro_id','city_id','url_id','addr'];
+    protected $fillable = ['name', 'family', 'password','tel','mobile','pro_id','city_id','url_id','addr','p_code'];
     protected $guarded = ['id','updated_at','created_at'];
     public function url()
     {

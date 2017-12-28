@@ -77,54 +77,31 @@
         <tr dir="rtl">
             <td width="50%" style="padding: 10px;">متن<br/>
                 <div id="btns" class="btns">
-                    <button onclick="$('#btns').slideUp(300);$('#regFrm').slideDown(300)" class="btn btn-primary">ثبت سفارش</button>
-                    <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ورود</button>
+                    <button onclick="$('#btns').slideUp(300);$('#orderFrm').slideDown(300)" class="btn btn-primary">ثبت سفارش</button>
                     <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ثبت اطلاعات پرداخت</button>
+                    <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">پیگیری سفارش</button>
                 </div>
-                <div id="regFrm" class="Frms" style="display: none">
+                <div id="orderFrm" class="Frms" style="display: none">
 
-<div id="orderFrm">
-                    قبل از ثبت سفارش، وارد شوید و یا ثبت نام کنید
-                    <br/>
-                    <button onclick="$('#orderFrm').slideUp(300);$('#registerFrm').slideDown(300)" class="btn btn-primary">ثبت نام</button>
-                    <button onclick="$('#regFrm').slideUp(300);$('#loginFrm').slideDown(300)"    class="btn btn-primary">ورود</button>
-</div>
-                        <div id="registerFrm" class="form-body" style="display: none;">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label col-md-8"  style="padding:2px">نام </label>
+                                        <label class="control-label col-md-8"  style="padding:2px">تعداد </label>
                                         <div class="col-md-10">
-                                            <input class="form-control input-sm" onkeypress="return NotNumberKey(event)" maxlength="60"  name="name"   id="name" type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-8"  style="padding:2px">نام خانوادگی</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control input-sm" maxlength="60"  onkeypress="return NotNumberKey(event)" name="family"   id="family" type="text" />
-                                        </div>
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-8"  style="padding:2px"> تلفن ثابت </label>
-                                        <div class="col-md-10">
-                                            <input class="form-control input-sm" maxlength="11"  name="tel" onkeypress="return isNumberKey(event)"   id="tel" type="text" />
+                                            <select class="form-control input-sm" id="count" name="count">
+                                                @for($i=1;$i<23;$i++)
+                                                    <option value="{{$i}}">{{Jdate::fn($i)}}</option>
+                                                    @endfor
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label col-md-8"  style="padding:2px"> تلفن همراه</label>
+                                        <label class="control-label col-md-8"  style="padding:2px">شماره تماس</label>
                                         <div class="col-md-10">
-                                            <input class="form-control input-sm" onkeypress="return isNumberKey(event)" maxlength="11"  name="mobile"   id="mobile"  onblur="
-checkMobile(this.value)"   id="email" type="text" />
-                                            <input type="hidden" value="0" id="mobileC"/>
+                                            <input class="form-control input-sm" maxlength="11"  name="tel" value="{{session('customer')->tel}}" onkeypress="return isNumberKey(event)"   id="tel" type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +116,11 @@ checkMobile(this.value)"   id="email" type="text" />
                                             <select class="form-control input-sm" id="pro_id" onchange="cities(this.value);">
 
                                                 @foreach($pros as $pro)
-                                                    <option value="{{ $pro->id  }}">{{$pro->name}}</option>
+                                                    <option
+                                                            @if($pro->id == Session('customer')->pro_id)
+                                                                    selected="selected"
+                                                                    @endif
+                                                            value="{{ $pro->id  }}">{{$pro->name}}</option>
                                                     @endforeach
 
                                             </select>
@@ -152,7 +133,11 @@ checkMobile(this.value)"   id="email" type="text" />
                                         <div class="col-md-10" id="cities">
                                             <select class="form-control input-sm" id="city_id">
                                                 @foreach($cities as $city)
-                                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                                    <option
+                                                            @if($city->id == Session('customer')->city_id)
+                                                            selected="selected"
+                                                            @endif
+                                                            value="{{$city->id}}">{{$city->name}}</option>
                                                     @endforeach
                                             </select>
                                         </div>
@@ -166,7 +151,7 @@ checkMobile(this.value)"   id="email" type="text" />
                                     <div class="form-group">
                                         <label class="control-label col-md-8"  style="padding:2px">نشانی</label>
                                         <div class="col-md-10">
-                                            <input class="form-control input-sm" maxlength="200" name="addr"   id="addr" type="text" />
+                                            <input class="form-control input-sm" maxlength="200" name="addr" value="{{Session('customer')->addr}}"   id="addr" type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -174,19 +159,12 @@ checkMobile(this.value)"   id="email" type="text" />
                             </div>
                             <div class="row">
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-8"  style="padding:2px">رمز عبور</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control input-sm" maxlength="60" dir="ltr"  name="password"   id="password" type="password" />
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label col-md-8"  style="padding:2px">کدپستی</label>
                                         <div class="col-md-10">
-                                            <input class="form-control input-sm" onkeypress="return isNumberKey(event)" maxlength="10" dir="ltr"  name="p_code"   id="p_code" type="text" />
+                                            <input class="form-control input-sm" onkeypress="return isNumberKey(event)" value="{{Session('customer')->p_code}}" maxlength="10" dir="ltr"  name="p_code"   id="p_code" type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +179,7 @@ checkMobile(this.value)"   id="email" type="text" />
                                 </div>
                                 <div class="col-md-6">
                                     <br/>
-                                    <button onclick="regCustomer()" class="btn btn-primary">ثبت نام</button>
+                                    <button onclick="regOrder()" class="btn btn-primary">ثبت سفارش</button>
                                     <div class="form-section caption-subject font-red-sunglo" id="m_ch" style="color:#ff1522"><br/></div>
                                 </div>
 
@@ -210,7 +188,7 @@ checkMobile(this.value)"   id="email" type="text" />
 
 
 
-                        </div>
+
                     </div>
 
 

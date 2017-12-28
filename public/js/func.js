@@ -365,7 +365,7 @@ function regPartner() {
 }
 function regCustomer() {
     var msg = '';
-    var emC = validate($('#email').val());
+
     if ( $('#name').val() == '' ){
         $('#name').focus();
         msg = 'نام وارد نشده';
@@ -415,6 +415,7 @@ function regCustomer() {
                 tel			 : $('#tel').val(),
                 addr		 : $('#addr').val(),
                 mobile		 : $('#mobile').val(),
+                p_code		 : $('#p_code').val(),
                 _token       : $('#_token').val(),
 
 
@@ -422,6 +423,52 @@ function regCustomer() {
             },
             function(data){
                 document.location = "/";
+
+            });
+
+
+
+
+    }
+}
+function regOrder() {
+    var msg = '';
+    if ( $('#tel').val() == '' ){
+        $('#tel').focus();
+        msg = 'شماره تلفن ثابت وارد نشده';
+    }
+
+    else if ( $('#addr').val() == '' ){
+        $('#addr').focus();
+        msg = 'نشانی وارد نشده';
+    }
+    else if ( $('#p_code').val() == '' ){
+        $('#p_code').focus();
+        msg = 'کدپستی وارد نشده';
+    }
+    if ( msg != '' ){
+        $('#m_ch').html(msg);
+
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/regOrder", {
+                pro_id       : $('#pro_id').val(),
+                city_id      : $('#city_id').val(),
+                tel			 : $('#tel').val(),
+                addr		 : $('#addr').val(),
+                count		 : $('#count').val(),
+                p_code		 : $('#p_code').val(),
+                _token       : $('#_token').val(),
+
+
+
+            },
+            function(data){
+                $('#orderFrm').html(data);
 
             });
 

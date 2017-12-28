@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class order extends Model
 {
+    protected $fillable = ['count', 'p_code','tel','addr','pro_id','customer_id','city_id','url_id'];
+    protected $guarded = ['id','updated_at','created_at'];
     public function url()
     {
         return $this->belongsTo('App\Models\url');

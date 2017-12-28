@@ -88,7 +88,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-8"  style="padding:2px">نام </label>
                                         <div class="col-md-10">
-                                            <input class="form-control input-sm" maxlength="60"  name="name"   id="name" type="text" />
+                                            <input class="form-control input-sm"  onkeypress="return NotNumberKey(event)" maxlength="60"  name="name"   id="name" type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-8"  style="padding:2px">نام خانوادگی</label>
                                         <div class="col-md-10">
-                                            <input class="form-control input-sm" maxlength="60"  name="family"   id="family" type="text" />
+                                            <input class="form-control input-sm"  onkeypress="return NotNumberKey(event)" maxlength="60"  name="family"   id="family" type="text" />
                                         </div>
                                     </div>
                                 </div>

@@ -34,6 +34,10 @@ Route::group(['middleware' => ['checkPartner']], function () {
     Route::post('/partners/transActs', 'PartnerController@transActsLow');
     Route::post('/partners/orders', 'PartnerController@ordersLow');
 });
+Route::group(['middleware' => ['checkCustomer']], function () {
+    Route::post('/regOrder', 'customerController@regOrder');
+
+});
 
 
 

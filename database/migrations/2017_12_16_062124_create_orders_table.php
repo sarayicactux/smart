@@ -20,8 +20,6 @@ class CreateOrdersTable extends Migration
             $table->string('p_code');
             $table->string('tel');
             $table->integer('count');
-            $table->string('order_time');
-            $table->string('order_date');
             $table->smallInteger('pro_id');
             $table->smallInteger('city_id');
             $table->smallInteger('last_status')->default();

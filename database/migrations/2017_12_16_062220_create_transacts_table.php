@@ -18,8 +18,6 @@ class CreateTransactsTable extends Migration
             $table->integer('amount');
             $table->string('tran_id')->unique();
             $table->string('tracking_code')->unique();
-            $table->string('pay_time');
-            $table->string('pay_date');
             $table->smallInteger('pay_type');
             $table->integer('url_id')->unsigned();
             $table->foreign('url_id')->references('id')->on('urls');

@@ -18,8 +18,6 @@ class CreatePayrqsTable extends Migration
             $table->smallInteger('user_id')->default(1);
             $table->integer('amount');
             $table->text('description');
-            $table->string('rq_time');
-            $table->string('rq_date');
             $table->text('m_resp');
             $table->smallInteger('last_status')->default(0);
             $table->integer('partner_id')->unsigned();

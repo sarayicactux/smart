@@ -13,7 +13,15 @@ use Verta;
 class visitController extends Controller
 {
     public function index(Request $request){
-        Session::forget('customer');
+       // Session::forget('customer');
+
+        if ( Session::has('customer') ){
+            $date = Jdate::medate();
+            $pros = pro_city::where('pro_id',0)->orderBy('id','ASC')->get();
+            $cities = pro_city::where('pro_id',Session('customer')->pro_id)->orderBy('id','ASC')->get();
+            return view('layouts.customer',array('date'=>Jdate::fn($date['date4']),'pros'=>$pros,'cities'=>$cities));
+        }
+        else {
             $v = verta();
             session([
                 'url_id'=>'1',
@@ -22,7 +30,7 @@ class visitController extends Controller
             if (isset($_SERVER['HTTP_REFERER'])){
 
                 $url = url::where('url','like',$_SERVER['HTTP_REFERER'])->get();
-               // var_dump($url);
+                // var_dump($url);
                 if (count($url) > 0){
                     $url = url::find($url[0]->id);
                     $url->visits()->create([
@@ -56,11 +64,6 @@ class visitController extends Controller
 
 
             }
-        if ( Session::has('customer') ){
-            $date = Jdate::medate();
-            return view('layouts.customer',array('date'=>Jdate::fn($date['date4'])));
-        }
-        else {
             $pros = pro_city::where('pro_id',0)->orderBy('id','ASC')->get();
             $cities = pro_city::where('pro_id',1)->orderBy('id','ASC')->get();
             $date = Jdate::medate();

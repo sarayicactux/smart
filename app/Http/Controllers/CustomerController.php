@@ -40,5 +40,34 @@ class CustomerController extends Controller
 
         return array('status'=>$log);
     }
+    public function regOrder(Request $request){
+        /*$order = new order([
+            'count' => $request->count,
+            'p_code' => $request->p_code,
+            'tel' => $request->tel,
+            'addr' => $request->addr,
+            'pro_id' => $request->pro_id,
+            'city_id' => $request->city_id,
+            'customer_id' => session('customer')->id,
+            'url_id' =>session('customer')->url_id,
+            ]
+
+        );*/
+        $order = new order();
+            $order->count       = $request->count;
+            $order->p_code      = $request->p_code;
+            $order->tel         = $request->tel;
+            $order->addr        = $request->addr;
+            $order->pro_id      = $request->pro_id;
+            $order->city_id     = $request->city_id;
+            $order->customer_id = session('customer')->id;
+            $order->url_id      = session('customer')->url_id;
+        $order->save();
+       /* $customer = customer::find(session('customer')->id);
+
+        //var_dump($url);
+        $customer->orders()->save($order,array('url_id'=>session('customer')->url_id));*/
+
+    }
 
 }
