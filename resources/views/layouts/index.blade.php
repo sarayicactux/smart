@@ -197,7 +197,7 @@ checkMobile(this.value)"   id="email" type="text" />
                             <div class="row">
                                 <div class="col-md-6">
                                     <br/>
-                                    <button onclick="$('#regFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">انصراف</button>
+                                    <button onclick="$('#registerFrm').slideUp(300);$('#orderFrm').slideDown(300)" class="btn btn-primary">انصراف</button>
                                 </div>
                                 <div class="col-md-6">
                                     <br/>

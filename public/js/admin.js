@@ -30,7 +30,7 @@ $(document).ready(function(){
 
 		$('#wait').fadeIn(100); $('#bg').fadeIn(100);	
 			
-		$.post("/Adlogin", { 
+		$.post("index.php/Adlogin", {
 			  		username           : $('#username').val(),
 					password         : $('#password').val(),
 					_token           : $('#_token').val(),
@@ -38,7 +38,7 @@ $(document).ready(function(){
 		 function(data){ 
 		 if ( data.status ){
 			
-			window.location = 'http://localhost:8000/';
+			window.location = 'http://localhost:8000/admin';
 			
 			 
 		 }//  2pm
@@ -58,8 +58,8 @@ $(document).ready(function(){
 							
 
 });
-		$('#admin_log').click(function (){
-									  
+		/*$('#admin_log').click(function (){
+
 			var msg = '';
 			if ( $('#username').val() == '' ){
 				$('#username').focus();
@@ -68,48 +68,48 @@ $(document).ready(function(){
 			else if ( $('#password').val() == '' ){
 				$('#password').focus();
 				msg = 'رمز عبور وارد نشده';
-				
+
 			}
-			
+
 			if ( msg != '' ){
 					$('#err_msg').html(msg);
 					$('#bg').fadeIn(100,function(){
-												
-												$('#alerts').fadeIn(200); 
-												 });
-					
-			}
-			else { 
-					
-					
 
-		$('#wait').fadeIn(100); $('#bg').fadeIn(100);	
-			
-		$.post("/Adlogin", { 
+												$('#alerts').fadeIn(200);
+												 });
+
+			}
+			else {
+
+
+
+		$('#wait').fadeIn(100); $('#bg').fadeIn(100);
+
+		$.post("index.php/Adlogin", {
 			  		username           : $('#username').val(),
 					password         : $('#password').val(),
 					_token           : $('#_token').val(),
 			   },
-		 function(data){ 
+		 function(data){
 		 if ( data.status ){
-			
+
 			window.location = 'http://localhost:8000/';
-			 
+
 		 }//  2pm
 		 else {
 			 msg = data.error;
 			  $('#err_msg').html(msg);
 					$('#bg').fadeIn(100,function(){
-												$('#alerts').fadeIn(200); 
+												$('#alerts').fadeIn(200);
 												 });
 			 }
 			  $('#wait').fadeOut(100); //$('#bg').fadeOut(100);
 		 }, "json");
-											
-									
+
+
 			}
-							
-});
+
+});*/
 		
 			  	
 		});

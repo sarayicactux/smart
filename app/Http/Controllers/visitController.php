@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\customer;
 use Illuminate\Http\Request;
 use App\Models\partner;
 use App\Models\url;
+use App\Models\order;
 use App\Models\visit;
 use App\Helpers\Jdate;
 use App\Models\pro_city;
@@ -19,7 +21,8 @@ class visitController extends Controller
             $date = Jdate::medate();
             $pros = pro_city::where('pro_id',0)->orderBy('id','ASC')->get();
             $cities = pro_city::where('pro_id',Session('customer')->pro_id)->orderBy('id','ASC')->get();
-            return view('layouts.customer',array('date'=>Jdate::fn($date['date4']),'pros'=>$pros,'cities'=>$cities));
+            $order = customer::find(Session('customer')->id)->orders()->where('last_status',0)->get();
+            return view('layouts.customer', array('date'=>Jdate::fn($date['date4']),'pros'=>$pros,'cities'=>$cities,'order'=>$order));
         }
         else {
             $v = verta();

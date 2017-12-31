@@ -75,10 +75,15 @@
     <table align="center" width="100%">
 
         <tr dir="rtl">
-            <td width="50%" style="padding: 10px;">متن<br/>
+            <td width="50%" style="padding: 10px;"> <div id="orderRep">
+                @if(count($order)>0)
+                    @include('customers.orders')
+                    @else
+
+
+                متن<br/>
                 <div id="btns" class="btns">
                     <button onclick="$('#btns').slideUp(300);$('#orderFrm').slideDown(300)" class="btn btn-primary">ثبت سفارش</button>
-                    <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ثبت اطلاعات پرداخت</button>
                     <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">پیگیری سفارش</button>
                 </div>
                 <div id="orderFrm" class="Frms" style="display: none">
@@ -175,7 +180,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <br/>
-                                    <button onclick="$('#regFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">انصراف</button>
+                                    <button onclick="$('#orderFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">انصراف</button>
                                 </div>
                                 <div class="col-md-6">
                                     <br/>
@@ -233,7 +238,8 @@
                     </div>
                 </div>
 
-
+</div>
+                @endif
             </td>
             <td width="50%">slider</td>
         </tr>

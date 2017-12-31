@@ -468,7 +468,52 @@ function regOrder() {
 
             },
             function(data){
-                $('#orderFrm').html(data);
+                $('#orderRep').html(data);
+                $('#bg').fadeOut(100);
+                $('#wait').fadeOut(100);
+
+            });
+
+
+
+
+    }
+}
+function registerCardP() {
+    var msg = '';
+    if ( $('#pay_date').val() == '' ){
+        $('#pay_date').focus();
+        msg = 'تاریخ پرداخت وارد نشده';
+    }
+
+    else if ( $('#tran_id').val() == '' ){
+        $('#tran_id').focus();
+        msg = 'شماره ارجاع وارد نشده';
+    }
+
+    if ( msg != '' ){
+        $('#m_ch').html(msg);
+
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/regCardP", {
+                pay_time     : $('#payH').val()+':'+$('#payM').val(),
+                pay_date     : $('#pay_date').val(),
+                tran_id		 : $('#tran_id').val(),
+                amount		 : $('#amount').val(),
+                _token       : $('#_token').val(),
+
+
+
+            },
+            function(data){
+                $('#orderRep').html(data);
+                $('#bg').fadeOut(100);
+                $('#wait').fadeOut(100);
 
             });
 

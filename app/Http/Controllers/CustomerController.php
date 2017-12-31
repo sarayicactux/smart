@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\partner;
 use App\Models\url;
 use App\Models\visit;
+use App\Models\cardp;
 use App\Models\customer;
 use App\Models\transact;
 use App\Models\order;
@@ -41,18 +42,7 @@ class CustomerController extends Controller
         return array('status'=>$log);
     }
     public function regOrder(Request $request){
-        /*$order = new order([
-            'count' => $request->count,
-            'p_code' => $request->p_code,
-            'tel' => $request->tel,
-            'addr' => $request->addr,
-            'pro_id' => $request->pro_id,
-            'city_id' => $request->city_id,
-            'customer_id' => session('customer')->id,
-            'url_id' =>session('customer')->url_id,
-            ]
 
-        );*/
         $order = new order();
             $order->count       = $request->count;
             $order->p_code      = $request->p_code;
@@ -62,11 +52,32 @@ class CustomerController extends Controller
             $order->city_id     = $request->city_id;
             $order->customer_id = session('customer')->id;
             $order->url_id      = session('customer')->url_id;
-        $order->save();
-       /* $customer = customer::find(session('customer')->id);
+           if( $order->save()) {
+               $order = order::where('id',$order->id)->get();
+               return view('customers.orders',array('order'=>$order));
+           }
 
-        //var_dump($url);
-        $customer->orders()->save($order,array('url_id'=>session('customer')->url_id));*/
+
+
+    }
+    public function regCardP(Request $request){
+        $order = customer::find(Session('customer')->id)->orders()->where('last_status',0)->get();
+        $cardp = new cardp();
+        $cardp->pay_time    = $request->pay_time;
+        $cardp->pay_date    = $request->pay_date;
+        $cardp->tran_id     = $request->tran_id;
+        $cardp->amount      = $request->amount;
+        $cardp->customer_id = session('customer')->id;
+        $cardp->url_id      = session('customer')->url_id;
+
+        $order = order::find($order[0]->id);
+
+        if( $order->cardp()->save($cardp)) {
+
+            return view('customers.regCardP');
+        }
+
+
 
     }
 

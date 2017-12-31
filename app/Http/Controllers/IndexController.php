@@ -8,9 +8,12 @@ use App\Helpers\Jdate;
 use App\Models\pro_city;
 use App\Models\partner;
 use Session;
+use Auth;
 
 class IndexController extends Controller
 {
+
+
     public function index()
     {
         //Session::forget('partner');
@@ -52,6 +55,36 @@ class IndexController extends Controller
         $ret = 1;
         if ( $n_code ) $ret = 0;
         return array('status'=>$ret);
+
+    }
+    public function admin(){
+    if (Auth::check()) {
+        $date = Jdate::medate();
+        return view('layouts.admins',array('date'=>Jdate::fn($date['date4'])));
+    }
+    else{
+        return view('master.gust');
+    }
+}
+    public function Adlogin(Request $request)
+    {
+        $c_login = false;
+        $msg = 'نام کاربری و رمز عبور صحیح نیست<br /> یا کاربری شما غیر فعال شده';
+        $data=array(
+            'email'=>$request->get('username'),
+            'password'=>$request->get('password')
+        );
+
+        if(Auth::attempt($data))
+        {
+            $c_login = true;
+            $msg     = '';
+        }
+        return array(
+            'status'   => $c_login,
+            'error'    => $msg
+
+        );
 
     }
 }

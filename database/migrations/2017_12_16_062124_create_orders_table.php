@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->integer('count');
             $table->smallInteger('pro_id');
             $table->smallInteger('city_id');
-            $table->smallInteger('last_status')->default();
+            $table->smallInteger('last_status')->default(0);
             $table->integer('url_id')->unsigned();
             $table->foreign('url_id')->references('id')->on('urls');
             $table->integer('customer_id')->unsigned();
