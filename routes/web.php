@@ -63,5 +63,13 @@ Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
     Route::post('/ordersLowUrl', 'adminController@ordersLowUrl');
     Route::post('/transActsLowUrl', 'adminController@transActsLowUrl');
     Route::post('/visits', 'adminController@visits');
+    Route::post('/orders', 'adminController@orders');
+    Route::post('/transActs', 'adminController@transActs');
+    Route::post('/cardPs', 'adminController@cardPs');
+    Route::post('/changeCardp', 'adminController@changeCardp');
+    Route::post('/orderInf', 'adminController@orderInf');
+    Route::post('/customers', 'adminController@customers');
+    Route::post('/costomerOrders', 'adminController@costomerOrders');
+    Route::post('/costomerTransActs', 'adminController@costomerTransActs');
 
 });

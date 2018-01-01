@@ -22,7 +22,7 @@
                 <tr align="center">
                     <td >{{ Jdate::fn($i)}}</td>
                     <td >{{ $transact->customer->name.' '.$transact->customer->family}}</td>
-                    <td >{{ Jdate::fn($transact->tel)}}</td>
+                    <td >{{ Jdate::fn($transact->customer->tel)}}</td>
                     <td dir="ltr" >{{Jdate::fn(Verta::instance($transact->created_at))}}</td>
                     <td dir="ltr" >{{$transact->url->name}}</td>
                     <td dir="ltr" >{{$transact->url->url}}</td>

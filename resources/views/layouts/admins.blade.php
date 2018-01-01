@@ -103,10 +103,13 @@
                     <a href="#" onclick="postMenus('admin/visits');" > بازدیدها</a>
                 </li>
                 <li class="dropdown">
+                    <a href="#" onclick="postMenus('admin/orders');" > سفارشها</a>
+                </li>
+                <li class="dropdown">
                     <a href="#" onclick="postMenus('admin/transActs');" > تراکنش ها</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" onclick="postMenus('admin/cardPs');" > واریز ها</a>
+                    <a href="#" onclick="postMenus('admin/cardPs');" > واریز ها به کارت</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" onclick="postMenus('admin/payRq');" >درخواست واریز</a>

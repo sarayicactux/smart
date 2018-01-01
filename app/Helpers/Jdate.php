@@ -845,7 +845,7 @@ public static  function echo_date2($intDate){
                 $j=2;
             }
         }
-        return html::fn($snum);
+        return self::fn($snum);
     }
 }
 

@@ -25,4 +25,5 @@ class customer extends Model
     {
         return $this->hasMany('App\Models\cardp');
     }
+
 }

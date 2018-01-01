@@ -671,6 +671,28 @@ function regPcard() {
 
     }
 }
+function changeCardp(id,status){
+    if (status != '0'){
+        $('html, body').animate({ scrollTop: 0 }, 1000);
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post('index.php/admin/changeCardp', {
+                _token           : $('#_token').val(),
+                id               : id,
+                status           : status
+            },
+            function(data){
+
+                if ( data ){
+                    $('#AdminDiv').html(data);
+                    $('#bg').fadeOut(100);
+                    $('#wait').fadeOut(100);
+                }//  2pm
+            });
+
+    }
+
+}
 function searchDec(){
   			$('#bg').fadeIn(100);
 			$('#wait').fadeIn(100);
