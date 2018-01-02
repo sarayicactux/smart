@@ -66,23 +66,59 @@ class PartnerController extends Controller
     }
     public function visitsLow(Request $request){
             $url = url::find($request->tId);
-            $visits = $url->visits()->get();
+            $visits = $url->visits()->orderBy('id','DESC')->limit(2000)->get();
             return view('partners.visitsLow',array('visits'=>$visits));
 
 
     }
     public function transActsLow(Request $request){
         $url = url::find($request->tId);
-        $transacts = $url->transacts()->get();
+        $transacts = $url->transacts()->orderBy('id','DESC')->limit(2000)->get();
         return view('partners.transActLow',array('transacts'=>$transacts));
 
 
     }
     public function ordersLow(Request $request){
         $url = url::find($request->tId);
-        $orders = $url->orders()->get();
+        $orders = $url->orders()->orderBy('id','DESC')->limit(2000)->get();
         return view('partners.ordersLow',array('orders'=>$orders));
 
 
+    }
+    public function bills(){
+        $partner = partner::find(session('partner')->id);
+        $urls = $partner->urls()->with('transacts')->get();
+        $sum = 0;
+        $i = 0;
+        foreach ($urls as $url){
+            $sumUrl = 0;
+            foreach ($url->transacts as $transact){
+                $sumUrl += $transact->amount;
+            }
+            $urlInf[$i]['id'] = $url->id;
+            $urlInf[$i]['url'] = $url->url;
+            $urlInf[$i]['sum'] = $sumUrl;
+            $sum += $sumUrl;
+        }
+        $pays = $partner->payparts()->get();
+        return view('partners.bills',array('pays'=>$pays,'sum'=>$sum,'urls'=>$urlInf));
+    }
+    public function payRq(){
+        $partner = partner::find(session('partner')->id);
+        $urls = $partner->urls()->with('transacts')->get();
+        $sum = 0;
+        $i = 0;
+        foreach ($urls as $url){
+            $sumUrl = 0;
+            foreach ($url->transacts as $transact){
+                $sumUrl += $transact->amount;
+            }
+            $urlInf[$i]['id'] = $url->id;
+            $urlInf[$i]['url'] = $url->url;
+            $urlInf[$i]['sum'] = $sumUrl;
+            $sum += $sumUrl;
+        }
+        $pays = $partner->payparts()->get();
+        return view('partners.payRq',array('pays'=>$pays,'sum'=>$sum,'urls'=>$urlInf));
     }
 }

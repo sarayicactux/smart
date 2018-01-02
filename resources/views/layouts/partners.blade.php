@@ -96,11 +96,9 @@
                 <li class="dropdown">
                     <a href="#" onclick="postMenus('/urls');" >نشانی وب</a>
                 </li>
+
                 <li class="dropdown">
-                    <a href="#" onclick="postMenus('/visits');" > بازدیدها</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" onclick="postMenus('/transActs');" > تراکنش ها</a>
+                    <a href="#" onclick="postMenus('/bills');" > صورتحساب ها</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" onclick="postMenus('/payRq');" >درخواست واریز</a>

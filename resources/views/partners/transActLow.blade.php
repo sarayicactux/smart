@@ -13,17 +13,23 @@
                 <td>مبلغ - ريال</td>
                 <td>زمان</td>
             </tr>
-            <?php $i=0;?>
+            <?php $i=0;
+            $sum = 0;?>
             @foreach ($transacts as $transact )
-                <?php $i++;?>
+                <?php $i++;
+
+                ?>
                 <tr align="center">
                     <td >{{ Jdate::fn($i)}}</td>
-                    <td >{{Jdate::echoNum($transact->amount)}}</td>
+                    <td >{{Jdate::echoNum($transact->amount)}}
+                    <?php $sum += $transact->amount; ?>
+                    </td>
                     <td dir="ltr" >{{Jdate::fn(Verta::instance($transact->created_at))}}</td>
                 </tr>
             @endforeach
         </table>
         </div>
+        <div align="center">جمع مبالغ: {{Jdate::echoNum($sum)}} ريال</div>
     </div>
 
 </div>
