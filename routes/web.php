@@ -38,6 +38,8 @@ Route::group(['middleware' => ['checkPartner']], function () {
     Route::post('/partners/orders', 'PartnerController@ordersLow');
     Route::post('/bills', 'PartnerController@bills');
     Route::post('/payRq', 'PartnerController@payRq');
+    Route::post('/regPayRq', 'PartnerController@regPayRq');
+    Route::post('/partners/payRqInf', 'PartnerController@payRqInf');
 });
 Route::group(['middleware' => ['checkCustomer']], function () {
     Route::post('/regOrder', 'customerController@regOrder');
@@ -73,5 +75,8 @@ Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
     Route::post('/customers', 'adminController@customers');
     Route::post('/costomerOrders', 'adminController@costomerOrders');
     Route::post('/costomerTransActs', 'adminController@costomerTransActs');
+    Route::post('/payRq', 'adminController@payRq');
+    Route::post('/payRqInf', 'AdminController@payRqInf');
+    Route::post('/regPayRqRes', 'AdminController@regPayRqRes');
 
 });

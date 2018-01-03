@@ -50,7 +50,7 @@
             <div class="form-group">
                 <label class="control-label col-md-8"  style="padding:2px">مبلغ - ريال</label>
                 <div class="col-md-10">
-                    <input class="form-control input-sm" maxlength="60" value="{{$order[0]->count*200000}}" onkeypress="return isNumberKey(event)" dir="ltr"  name="amount" id="amount" type="text" />
+                    <input class="form-control input-sm" maxlength="60" readonly value="{{$order[0]->count*200000}}" onkeypress="return isNumberKey(event)" dir="ltr"  name="amount" id="amount" type="text" />
                 </div>
             </div>
         </div>

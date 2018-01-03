@@ -107,7 +107,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-8"  style="padding:2px"> تلفن ثابت </label>
                                         <div class="col-md-10">
-                                            <input class="form-control input-sm" maxlength="11"  name="tel" onkeypress="return isNumberKey(event)"   id="tel" type="text" />
+                                            <input class="form-control input-sm" dir="ltr" maxlength="11"  name="tel" onkeypress="return isNumberKey(event)"   id="tel" type="text" />
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-8"  style="padding:2px"> تلفن همراه</label>
                                         <div class="col-md-10">
-                                            <input class="form-control input-sm" onkeypress="return isNumberKey(event)" maxlength="11"  name="mobile"   id="mobile" type="text" />
+                                            <input class="form-control input-sm" dir="ltr" onkeypress="return isNumberKey(event)" maxlength="11"  name="mobile"   id="mobile" type="text" />
                                         </div>
                                     </div>
                                 </div>

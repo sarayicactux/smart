@@ -168,4 +168,34 @@ class AdminController extends Controller
 
 
     }
+    public function payRq(){
+        $payRqs = payrq::orderBy('id','DESC')->limit(1000)->get();
+
+        return view('admins.payRqs',array('payRqs'=>$payRqs));
+    }
+    public function payRqInf(Request $request){
+        $payrq = payrq::find($request->tId);
+        return view('admins.payRqInf',array('payrq'=>$payrq));
+
+
+    }
+    public function regPayRqRes(Request $request){
+            $payrq = payrq::find($request->id);
+            $payrq->last_status = $request->last_status;
+            $payrq->m_resp      =  $request->m_resp;
+            $payrq->save();
+            if ($request->last_status == '2'){
+                    $payPart = new paypart();
+                    $payPart->amount = $payrq->amount;
+                    $payPart->description    = $payrq->m_resp;
+                    $payPart->pay_time       = $request->pay_time;
+                    $payPart->pay_date       = $request->pay_date;
+                    $payPart->tran_id        = $request->tran_id;
+                    $payPart->pay_date       = $request->pay_date;
+                    $payPart->partner_id     = $payrq->partner_id;
+                    $payPart->payrq_id       = $request->id;
+                    $payPart->save();
+            }
+            return $this->payRq();
+    }
 }

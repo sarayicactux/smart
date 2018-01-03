@@ -227,6 +227,38 @@ function urls(id,name,description,url){
             });
     }
 }
+function payRq(amount,description){
+    var msg = '';
+    if ( amount == '' ){
+
+        msg = ' مبلغ وارد نشده';
+    }
+
+    if ( msg != '' ){
+        $('#err_msg').html(msg);
+        $('#bg').fadeIn(100,function(){
+            $('#alerts').fadeIn(200);
+        });
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/regPayRq", {
+                amount		:	amount,
+                description	:	description,
+                _token  : $('#_token').val(),
+            },
+            function(data){
+                $('#AdminDiv').html(data);
+                $("body").removeClass("modal-open");
+                $('.modal-backdrop').fadeOut(100);
+                $('#bg').fadeOut(100);
+                $('#wait').fadeOut(100);
+            });
+    }
+}
 function cities(id){
     //$('#wait').fadeIn(100);
     $.post("index.php/cities", {
@@ -512,6 +544,57 @@ function registerCardP() {
             },
             function(data){
                 $('#orderRep').html(data);
+                $('#bg').fadeOut(100);
+                $('#wait').fadeOut(100);
+
+            });
+
+
+
+
+    }
+}
+function regPayRqRes(id) {
+    var msg = '';
+    if ( $('#m_resp').val() == '' ){
+        $('#m_resp').focus();
+        msg = 'توضیحات وارد نشده';
+    }
+    else if ( $('#pay_date').val() == '' ){
+        $('#pay_date').focus();
+        msg = 'تاریخ پرداخت وارد نشده';
+    }
+    else if ( $('#tran_id').val() == '' ){
+        $('#tran_id').focus();
+        msg = 'شماره ارجاع وارد نشده';
+    }
+
+    if ( msg != '' ){
+        $('#m_ch').html(msg);
+
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/admin/regPayRqRes", {
+                last_status  : $('#last_status').val(),
+                m_resp       : $('#m_resp').val(),
+                pay_time     : $('#payH').val()+':'+$('#payM').val(),
+                pay_date     : $('#pay_date').val(),
+                tran_id		 : $('#tran_id').val(),
+                amount		 : $('#amount').val(),
+                id		     : id,
+                _token       : $('#_token').val(),
+
+
+
+            },
+            function(data){
+                $('#AdminDiv').html(data);
+                $("body").removeClass("modal-open");
+                $('.modal-backdrop').fadeOut(100);
                 $('#bg').fadeOut(100);
                 $('#wait').fadeOut(100);
 

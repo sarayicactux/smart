@@ -99,4 +99,12 @@
 </div>
 </span>
         </div></div></div>
+<div class="modal fade" id="modalLayer" tabindex="-1" role="dialog" aria-labelledby="modalLayer">
+
+	<div class="modal-dialog modal-sm" role="document" style="width:600px">
+		<div class="modal-content" id="LayerDiv">
+
+		</div>
+	</div>
+</div>
 

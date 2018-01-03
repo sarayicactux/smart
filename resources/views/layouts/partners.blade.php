@@ -101,7 +101,7 @@
                     <a href="#" onclick="postMenus('/bills');" > صورتحساب ها</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" onclick="postMenus('/payRq');" >درخواست واریز</a>
+                    <a href="#" onclick="postMenus('/payRq');" >درخواستهای واریز</a>
                 </li>
                 <li class="dropdown">
 

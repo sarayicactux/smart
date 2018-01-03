@@ -119,6 +119,23 @@ class PartnerController extends Controller
             $sum += $sumUrl;
         }
         $pays = $partner->payparts()->get();
-        return view('partners.payRq',array('pays'=>$pays,'sum'=>$sum,'urls'=>$urlInf));
+        $payRqs = $partner->payrqs()->get();
+        return view('partners.payRq',array('pays'=>$pays,'sum'=>$sum,'urls'=>$urlInf,'payRqs'=>$payRqs));
+    }
+    public function regPayRq(Request $request){
+
+            $partner = partner::find(session('partner')->id);
+            $PayRq = $partner->payrqs()->create($request->all());
+
+
+
+
+        return $this->payRq();
+    }
+    public function payRqInf(Request $request){
+        $payrq = payrq::find($request->tId);
+        return view('partners.payRqInf',array('payrq'=>$payrq));
+
+
     }
 }
