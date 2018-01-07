@@ -543,7 +543,7 @@ function registerCardP() {
 
             },
             function(data){
-                $('#orderRep').html(data);
+                $('#cardPDiv').html(data);
                 $('#bg').fadeOut(100);
                 $('#wait').fadeOut(100);
 

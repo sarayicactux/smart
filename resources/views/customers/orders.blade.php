@@ -1,24 +1,29 @@
-<div class="row">
+<div class="row" style="padding: 15px;" id="btns"><div class="row">
 
 
-    <div style="padding: 12px;">{{Session('customer')->name}}&nbsp;{{Session('customer')->family.'  عزیر'}} <br>با تشکر از شما، لطفا نحوه پرداخت را انتخاب کنید
+    <div style="padding: 12px;">{{Session('customer')->name}}&nbsp;{{Session('customer')->family.'  عزیز'}} <br>با تشکر از شما، لطفا نحوه پرداخت را انتخاب کنید
     </div>
 
 
 </div>
 
 
-<div class="row" id="btns">
-    <div class="col-md-6">
+
+    <div class="col-md-3">
         <br/>
         <button onclick="$('#btns').slideUp(300);$('#cardPDiv').slideDown(300)" class="btn btn-primary">کارت به کارت</button>
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
         <br/>
         <button onclick="regOrder()" class="btn btn-primary">پرداخت آنلاین</button>
-        <div class="form-section caption-subject font-red-sunglo" id="m_ch" style="color:#ff1522"><br/></div>
-    </div>
+        </div>
+
+<div class="col-md-3">
+    <br/>
+    <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">پیگیری سفارش</button>
+</div>
+</div>
 
 </div>
 <div id="cardPDiv" class="Frms" style="display: none">
@@ -109,6 +114,15 @@
 
     </div>
 
+</div>
+<div id="loginFrm" class="Frms" align="center" style="display: none">
+    @if(count($sales)>0)
+        @include('customers.sales')
+    @else
+        شما سفارشی ثبت نکرده اید
+    @endif
+
+        <button onclick="$('#loginFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">بازگشت</button>
 </div>
 <script language="javascript">
     $('#pay_date, #pay_date').MdPersianDateTimePicker({TargetSelector: '#pay_date'});

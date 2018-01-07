@@ -55,7 +55,8 @@ class CustomerController extends Controller
             $order->url_id      = session('customer')->url_id;
            if( $order->save()) {
                $order = order::where('id',$order->id)->get();
-               return view('customers.orders',array('order'=>$order));
+               $sales = customer::find(Session('customer')->id)->orders()->with('transact')->with('cardp')->get();
+               return view('customers.orders',array('order'=>$order,'sales'=>$sales));
            }
 
 
@@ -85,8 +86,8 @@ class CustomerController extends Controller
         $order = order::find($request->tId);
         $pro   = pro_city::find($order->pro_id);
         $city  = pro_city::find($order->city_id);
-        $cardP = $order->cardp();
-        $transAct = $order->transact();
+        $cardP = cardp::where('order_id',$order->id)->first();
+        $transAct = transact::where('order_id',$order->id)->first();
         return view('customers.order',array('order'=>$order,'pro'=>$pro->name,'city'=>$city->name,'cardP'=>$cardP,'transAct'=>$transAct));
     }
 

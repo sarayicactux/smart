@@ -76,14 +76,17 @@
     <table align="center">
 
         <tr dir="rtl">
-            <td style="padding: 10px; background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top">متن<br/>
-                <div id="btns" class="btns">
+            <td style=" background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top">
+                <div id="btns" class="btns" style="padding: 120px;" >
+                    {{Jdate::fn('30')}} درصد پورسانت فروش<br/>
+                    حداقل مبلغ جهت واریز {{Jdate::echoNum('60000')}} تومان <br/>
+                    <br/><br/>
                     <button onclick="$('#btns').slideUp(300);$('#regFrm').slideDown(300)" class="btn btn-primary">ثبت نام</button>
                     <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ورود</button>
                 </div>
                 <div id="regFrm" class="Frms" style="display: none">
-
-                        <div class="form-body">
+                    <br><br>
+                        <div class="form-body" style="padding-right:10px">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -243,9 +246,10 @@ checkEmail(this.value)"   id="email" type="text" />
                     </div>
 
 
-                <div id="loginFrm" class="Frms" style="display: none">
+                <div id="loginFrm" class="Frms" style="display: none; padding-right: 60px; padding-top: 30px;">
+                    <div class="form-body" id="login">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label col-md-8"  style="padding:2px">نشانی ایمیل </label>
                                 <div class="col-md-10">
@@ -255,7 +259,7 @@ checkEmail(this.value)"   id="email" type="text" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label col-md-8"  style="padding:2px">رمز عبور</label>
                                 <div class="col-md-10">
@@ -266,19 +270,46 @@ checkEmail(this.value)"   id="email" type="text" />
 
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-10" align="right">
                             <br/>
-                            <button onclick="$('#loginFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">انصراف</button>
+                            <button onclick="$('#loginFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">بازگشت</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <button onclick="loginPartner()" class="btn btn-primary">ورود</button>
                         </div>
 
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-10">
+                            <a style="color: #ffffff" href="#" onclick="$('#login').slideUp(300);$('#forgetPass').slideDown(300)">رمز عبور خود را فراموش کردید؟</a>
                             <br/>
 
                             <div class="form-section caption-subject font-red-sunglo" id="m_ch1" style="color:#ff1522"><br/></div>
+                        </div>
+
+                    </div>
+                    </div>
+
+                    <div class="form-body" id="forgetPass" style="display: none">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label class="control-label col-md-8"  style="padding:2px">نشانی ایمیل </label>
+                                    <div class="col-md-10">
+                                        <input class="form-control input-sm" maxlength="60" dir="ltr"  name="emailForget" id="emailForget" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <br/>
+                                <button onclick="$('#forgetPass').slideUp(300);$('#login').slideDown(300)" class="btn btn-primary">بازگشت</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button onclick="forgetPartner()" class="btn btn-primary">بازیابی رمز عبور</button>
+                            </div>
+
                         </div>
 
                     </div>

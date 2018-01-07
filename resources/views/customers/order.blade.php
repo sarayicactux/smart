@@ -54,6 +54,7 @@
                         <td>شماره ارجاع</td>
                         <td>تاریخ پرداخت</td>
                         <td> تاریخ ثبت </td>
+                        <td> وضعیت </td>
 
                     </tr>
 
@@ -62,30 +63,13 @@
                         <td >{{ Jdate::fn($cardP->tran_id)}}</td>
                         <td dir="ltr" >{{Jdate::fn($cardP->pay_date).' '.Jdate::fn($cardP->pay_time)}}</td>
                         <td dir="rtl" >{{Jdate::fn(Verta::instance($cardP->created_at))}}</td>
-
+                        <td>در انتظار تایید</td>
                     </tr>
 
                 </table>
             @else پرداختی انجام نشده
             @endif
-            <table align="center"  dir="rtl" class="table  table-striped table-condensed  table-hover">
-                <tr align="center">
-                    <td>شماره تماس</td>
-                    <td>تعداد</td>
-                    <td>تاریخ سفارش</td>
-                    <td> نشانی </td>
 
-                </tr>
-
-                <tr align="center">
-                    <td >{{ Jdate::fn($order->tel)}}</td>
-                    <td >{{ Jdate::fn($order->count)}}</td>
-                    <td dir="ltr" >{{Jdate::fn(Verta::instance($order->created_at))}}</td>
-                    <td dir="rtl" >{{' استان '.$pro.' شهر '.$city.' '.$order->addr.' کد پستی '.$order->p_code}}</td>
-
-                </tr>
-
-            </table>
         </fieldset>
 
     </div>
