@@ -140,9 +140,16 @@ class AdminController extends Controller
                 $transAct->order_id = $cardP->order_id;
                 $transAct->save();
 
+                $order = order::find($cardP->order_id);
+                $order->last_status = 1;
+                $order->save();
+
             }
             if($request->status == '2'){
                 transact::where('tran_id', $cardP->tran_id)->delete();
+                $order = order::find($cardP->order_id);
+                $order->last_status = 0;
+                $order->save();
             }
 
            return $this->cardPs();

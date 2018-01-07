@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="<?php echo csrf_token() ?>"/>
     <title>سیستم همکاری در فروش</title>
     <link rel="icon" type="image/png" href="favicon.png"  />
-
+    <link rel="stylesheet" type="text/css" href="{{asset('engine1/style.css')}}" />
+    <script type="text/javascript" src="{{asset('engine1/jquery.js')}}"></script>
     <script src="{{asset('js/jquery-1.7.2.min.js')}}"></script>
     <script src="{{asset('js/func.js')}}"></script>
     <script src="{{asset('js/admin.js')}}"></script>
@@ -59,11 +60,11 @@
     <!-- END PAGE LEVEL SCRIPTS -->
 
 </head>
-<body>
+<body style="overflow: hidden;">
 <div class="">
     <div class="container">
-        <br /><br />
-        <br /><br />
+        <br /><br /><br />
+       
 
 
     </div>
@@ -72,10 +73,10 @@
 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
 <div class="container"  id="AdminDiv">
-    <table align="center" width="100%">
+    <table align="center">
 
         <tr dir="rtl">
-            <td width="50%" style="padding: 10px;">متن<br/>
+            <td style="padding: 10px; background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top">متن<br/>
                 <div id="btns" class="btns">
                     <button onclick="$('#btns').slideUp(300);$('#regFrm').slideDown(300)" class="btn btn-primary">ثبت نام</button>
                     <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ورود</button>
@@ -285,7 +286,7 @@ checkEmail(this.value)"   id="email" type="text" />
 
 
             </td>
-            <td width="50%">slider</td>
+            <td style="text-align: left;width: 640px;" dir="ltr">@include('master.slider')</td>
         </tr>
     </table>
 
@@ -299,6 +300,8 @@ checkEmail(this.value)"   id="email" type="text" />
         $('[data-toggle="popover"]').popover()
     })
 </script>
+<script type="text/javascript" src="{{asset('engine1/wowslider.js')}}"></script>
+<script type="text/javascript" src="{{asset('engine1/script.js')}}"></script>
 <div id="bg"></div>
 <div id="wait" align="center" >
     <span style="background:#FFFF99; padding:3px">لطفا کمی صبر کنید</span>

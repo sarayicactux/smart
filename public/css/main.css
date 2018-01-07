@@ -8,9 +8,9 @@
  @font-face {
   font-family: 'IRNazanin';
   font-weight:normal;
-  src: url('../font/IRNazanin.eot?#') format('eot'),  /* IE6–8 */
+  src: url('../font/IRNazanin.eot?#') format('eot'),  /* IE6ï¿½8 */
        url('../font/IRNazanin.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-       url('../font/IRNazanin.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+       url('../font/IRNazanin.ttf') format('truetype');  /* Saf3ï¿½5, Chrome4+, FF3.5, Opera 10+ */
 }
 @font-face {
     font-family: 'mitra' ;
@@ -21,7 +21,7 @@
          url('../font/BMitra.svg#BMitra') format('svg') ;
     font-weight: normal ;
     font-style: normal ;
-    unicode-range: U+0600–06FF ;
+    unicode-range: U+0600ï¿½06FF ;
 }
 @font-face {
     font-family: "ns";
@@ -38,7 +38,7 @@
          url('../font/BMitra.svg#BMitra') format('svg') ;
     font-weight: normal ;
     font-style: normal ;
-    unicode-range: U+0600–06FF ;
+    unicode-range: U+0600ï¿½06FF ;
 }
 @font-face {
     font-family: IRANSans;
@@ -129,7 +129,6 @@
 #wait {
 display:none; position:fixed;  text-align:center; font-family:ns; z-index:4005; font-size:14px; top:50px; width:10%; right:42%;
 }
-#AdminDiv{background: #fff;margin-top:13px;}
 body {
     background-color: #eee;
     font-family: IRANSans;

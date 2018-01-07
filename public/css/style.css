@@ -135,7 +135,7 @@
 #wait {
 display:none; position:fixed;  text-align:center; font-family:ns; z-index:4005; font-size:14px; top:50px; width:10%; right:42%;
 }
-#AdminDiv{background: #fff;margin-top:13px;}
+
 body {
     background-color: #eee;
     background-image: url(../images/god.jpg);
@@ -147,6 +147,8 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
+
+
     color: #666;
 
 }

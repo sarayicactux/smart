@@ -34,7 +34,7 @@
 <td  >{{Jdate::echoNum($cardP->amount)}}</td>
 <td  >{{Jdate::fn($cardP->tran_id)}}</td>
 <td dir="ltr" >{{Jdate::fn($cardP->pay_date).' '.Jdate::fn($cardP->pay_time)}}</td>
-<td >{{$cardP->customer->name.' '.$cardP->customer->name}}</td>
+<td >{{$cardP->customer->name.' '.$cardP->customer->family}}</td>
 <td dir="ltr" >{{Jdate::fn(Verta::instance($cardP->order->created_at))}}</td>
 <td dir="ltr" >{{$cardP->order->tel}}</td>
 <td style="cursor:pointer"   data-toggle="modal" data-target="#modalLayer" onclick="ctrlAct('{{ $cardP->order->id}}','admin/orderInf')">
@@ -81,7 +81,7 @@
 <td  >{{Jdate::echoNum($cardP->amount)}}</td>
 <td  >{{Jdate::fn($cardP->tran_id)}}</td>
 <td dir="ltr" >{{Jdate::fn($cardP->pay_date).' '.Jdate::fn($cardP->pay_time)}}</td>
-<td >{{$cardP->customer->name.' '.$cardP->customer->name}}</td>
+<td >{{$cardP->customer->name.' '.$cardP->customer->family}}</td>
 <td dir="ltr" >{{Jdate::fn(Verta::instance($cardP->order->created_at))}}</td>
 <td dir="ltr" >{{$cardP->order->tel}}</td>
             <td style="cursor:pointer"   data-toggle="modal" data-target="#modalLayer" onclick="ctrlAct('{{ $cardP->order->id}}','admin/orderInf')">
@@ -127,7 +127,7 @@
 <td  >{{Jdate::echoNum($cardP->amount)}}</td>
 <td  >{{Jdate::fn($cardP->tran_id)}}</td>
 <td dir="ltr" >{{Jdate::fn($cardP->pay_date).' '.Jdate::fn($cardP->pay_time)}}</td>
-<td >{{$cardP->customer->name.' '.$cardP->customer->name}}</td>
+<td >{{$cardP->customer->name.' '.$cardP->customer->family}}</td>
 <td dir="ltr" >{{Jdate::fn(Verta::instance($cardP->order->created_at))}}</td>
 <td dir="ltr" >{{$cardP->order->tel}}</td>
             <td style="cursor:pointer"   data-toggle="modal" data-target="#modalLayer" onclick="ctrlAct('{{ $cardP->order->id}}','admin/orderInf')">

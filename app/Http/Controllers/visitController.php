@@ -22,7 +22,8 @@ class visitController extends Controller
             $pros = pro_city::where('pro_id',0)->orderBy('id','ASC')->get();
             $cities = pro_city::where('pro_id',Session('customer')->pro_id)->orderBy('id','ASC')->get();
             $order = customer::find(Session('customer')->id)->orders()->where('last_status',0)->get();
-            return view('layouts.customer', array('date'=>Jdate::fn($date['date4']),'pros'=>$pros,'cities'=>$cities,'order'=>$order));
+            $sales = customer::find(Session('customer')->id)->orders()->with('transact')->with('cardp')->get();
+            return view('layouts.customer', array('date'=>Jdate::fn($date['date4']),'pros'=>$pros,'cities'=>$cities,'order'=>$order,'sales'=>$sales));
         }
         else {
             $v = verta();

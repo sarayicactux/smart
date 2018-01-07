@@ -12,6 +12,7 @@ use App\Models\transact;
 use App\Models\order;
 use App\Helpers\Jdate;
 use Verta;
+use App\Models\pro_city;
 
 class CustomerController extends Controller
 {
@@ -79,6 +80,14 @@ class CustomerController extends Controller
 
 
 
+    }
+    public function customerOrder(Request $request){
+        $order = order::find($request->tId);
+        $pro   = pro_city::find($order->pro_id);
+        $city  = pro_city::find($order->city_id);
+        $cardP = $order->cardp();
+        $transAct = $order->transact();
+        return view('customers.order',array('order'=>$order,'pro'=>$pro->name,'city'=>$city->name,'cardP'=>$cardP,'transAct'=>$transAct));
     }
 
 }

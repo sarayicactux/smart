@@ -1,17 +1,12 @@
 <div class="row">
 
 
-    <div class="col-md-6">{{Session('customer')->name}}&nbsp;{{Session('customer')->family}}<br>با تشکر از شما، لطفا نحوه پرداخت را انتخاب کنید
+    <div style="padding: 12px;">{{Session('customer')->name}}&nbsp;{{Session('customer')->family.'  عزیر'}} <br>با تشکر از شما، لطفا نحوه پرداخت را انتخاب کنید
     </div>
 
 
 </div>
-<div class="row"> <div class="col-md-14">
-    پرداخت به کارت به شماره 5241-4525-5241-8574
-    <br>بانک ملت
-    <br>
-    به نام محمد سرایی
-    </div></div>
+
 
 <div class="row" id="btns">
     <div class="col-md-6">
@@ -27,6 +22,12 @@
 
 </div>
 <div id="cardPDiv" class="Frms" style="display: none">
+    <div class="row" style="padding: 12px;"  >
+        پرداخت به کارت به شماره 5241-4525-5241-8574
+        <br>بانک ملت
+        <br>
+        به نام محمد سرایی
+    </div>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -92,7 +93,9 @@
         <div class="col-md-6">
             <br/>
             <button onclick="$('#cardPDiv').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">انصراف</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="col-md-6">
+            <br/>
             <button onclick="registerCardP()" class="btn btn-primary">ثبت اطلاعات</button>
         </div>
 

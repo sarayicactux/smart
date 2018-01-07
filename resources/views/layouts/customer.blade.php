@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="<?php echo csrf_token() ?>"/>
     <title>هوشیار سازه</title>
     <link rel="icon" type="image/png" href="favicon.png"  />
-
+    <link rel="stylesheet" type="text/css" href="{{asset('engine1/style.css')}}" />
+    <script type="text/javascript" src="{{asset('engine1/jquery.js')}}"></script>
     <script src="{{asset('js/jquery-1.7.2.min.js')}}"></script>
     <script src="{{asset('js/func.js')}}"></script>
     <script src="{{asset('js/admin.js')}}"></script>
@@ -59,11 +60,10 @@
     <!-- END PAGE LEVEL SCRIPTS -->
 
 </head>
-<body>
+<body style="overflow: hidden;">
 <div class="">
     <div class="container">
-        <br /><br />
-        <br /><br />
+        <br /><br /><br />
 
 
     </div>
@@ -72,10 +72,10 @@
 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
 <div class="container"  id="AdminDiv">
-    <table align="center" width="100%">
+    <table align="center">
 
         <tr dir="rtl">
-            <td width="50%" style="padding: 10px;"> <div id="orderRep">
+            <td style="padding: 10px; background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top"> <div id="orderRep">
                 @if(count($order)>0)
                     @include('customers.orders')
                     @else
@@ -198,50 +198,17 @@
 
 
                 <div id="loginFrm" class="Frms" style="display: none">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label col-md-8"  style="padding:2px">شماره تلفن همراه</label>
-                                <div class="col-md-10">
-                                    <input class="form-control input-sm" maxlength="60" dir="ltr"  name="mobileLogin" id="mobileLogin" type="text" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label col-md-8"  style="padding:2px">رمز عبور</label>
-                                <div class="col-md-10">
-                                    <input class="form-control input-sm" maxlength="60" dir="ltr"  name="passwordLogin"   id="passwordLogin" type="password" />
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <br/>
-                            <button onclick="$('#loginFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">انصراف</button>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button onclick="loginCustomer()" class="btn btn-primary">ورود</button>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <br/>
-
-                            <div class="form-section caption-subject font-red-sunglo" id="m_ch1" style="color:#ff1522"><br/></div>
-                        </div>
-
-                    </div>
+                    @if(count($sales)>0)
+                        @include('customers.sales')
+                    @else
+                    شما سفارشی ثبت نکرده اید
+                    @endif
                 </div>
 
 </div>
                 @endif
             </td>
-            <td width="50%">slider</td>
+            <td style="text-align: left;width: 640px;" dir="ltr">@include('master.slider')</td>
         </tr>
     </table>
 
@@ -255,6 +222,8 @@
         $('[data-toggle="popover"]').popover()
     })
 </script>
+<script type="text/javascript" src="{{asset('engine1/wowslider.js')}}"></script>
+<script type="text/javascript" src="{{asset('engine1/script.js')}}"></script>
 <div id="bg"></div>
 <div id="wait" align="center" >
     <span style="background:#FFFF99; padding:3px">لطفا کمی صبر کنید</span>
