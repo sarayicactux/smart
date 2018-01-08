@@ -15,7 +15,8 @@
 
 Auth::routes();
 Route::get('/', 'visitController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/myUrl', 'visitController@myUrl');
+Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'indexController@admin');
 Route::post('/Adlogin', 'indexController@Adlogin');
 Route::get('/logOut',function (){Session::forget('partner');Session::forget('customer');

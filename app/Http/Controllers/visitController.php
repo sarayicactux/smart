@@ -76,4 +76,8 @@ class visitController extends Controller
         }
 
     }
+    public function myUrl(){
+
+        if (isset($_SERVER['HTTP_REFERER'])) echo "You Refere URL Is : ".$_SERVER['HTTP_REFERER'];
+    }
 }
