@@ -12,10 +12,14 @@ use App\Helpers\Jdate;
 use App\Models\pro_city;
 use Session;
 use Verta;
+require_once('nusoap.php');
+use nusoap_client;
+
 class visitController extends Controller
 {
     public function index(Request $request){
        // Session::forget('customer');
+
 
         if ( Session::has('customer') ){
             $date = Jdate::medate();

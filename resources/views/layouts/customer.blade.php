@@ -75,7 +75,8 @@
     <table align="center">
 
         <tr dir="rtl">
-            <td style="padding: 10px; background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top">@if(count($order)>0) <div id="orderRep">
+            <td style="padding: 10px; background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top"><div id="orderRep">
+                    @if(count($order)>0)
 
                     @include('customers.orders')
                     @else

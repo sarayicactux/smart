@@ -10,6 +10,10 @@ use App\Models\partner;
 use Session;
 use Auth;
 
+
+
+
+
 class IndexController extends Controller
 {
 

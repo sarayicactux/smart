@@ -554,6 +554,29 @@ function registerCardP() {
 
     }
 }
+function onlinePay() {
+
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/onlinePay", {
+                _token       : $('#_token').val(),
+
+
+
+            },
+            function(data){
+                if (data.status){
+                    document.location = "https://www.zarinpal.com/pg/StartPay/"+data.Authority;
+                }
+
+            },'json');
+
+
+
+
+
+}
 function regPayRqRes(id) {
     var msg = '';
     if ( $('#m_resp').val() == '' ){

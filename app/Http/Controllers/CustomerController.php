@@ -13,6 +13,8 @@ use App\Models\order;
 use App\Helpers\Jdate;
 use Verta;
 use App\Models\pro_city;
+require_once('nusoap.php');
+use nusoap_client;
 
 class CustomerController extends Controller
 {
@@ -89,6 +91,36 @@ class CustomerController extends Controller
         $cardP = cardp::where('order_id',$order->id)->first();
         $transAct = transact::where('order_id',$order->id)->first();
         return view('customers.order',array('order'=>$order,'pro'=>$pro->name,'city'=>$city->name,'cardP'=>$cardP,'transAct'=>$transAct));
+    }
+    public function onlinePay(){
+
+        $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';  //Required
+        $Amount = 1000; //Amount will be based on Toman  - Required
+        $Description = 'توضیحات تراکنش تستی';  // Required
+        $Email = 'UserEmail@Mail.Com'; // Optional
+        $Mobile = '09123456789'; // Optional
+        $CallbackURL = 'http://www.m0b.ir/verify.php';  // Required
+
+        $client = new nusoap_client('https://www.zarinpal.com/pg/services/WebGate/wsdl', 'wsdl');
+       $client->soap_defencoding = 'UTF-8';
+        $result = $client->call('PaymentRequest', [
+            [
+                'MerchantID'     => $MerchantID,
+                'Amount'         => $Amount,
+                'Description'    => $Description,
+                'Email'          => $Email,
+                'Mobile'         => $Mobile,
+                'CallbackURL'    => $CallbackURL,
+            ],
+        ]);
+
+        $status = false;
+        $Authority = '';
+        if ($result->Status == 100) {
+            $status = true;
+            $Authority = $result->Authority;
+        }
+        return ['status'=>$status,'Authority'=>$Authority];
     }
 
 }

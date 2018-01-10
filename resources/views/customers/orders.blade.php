@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-3">
         <br/>
-        <button onclick="regOrder()" class="btn btn-primary">پرداخت آنلاین</button>
+        <button onclick="onlinePay()" class="btn btn-primary">پرداخت آنلاین</button>
         </div>
 
 <div class="col-md-3">
