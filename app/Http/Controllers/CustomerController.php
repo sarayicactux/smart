@@ -10,11 +10,13 @@ use App\Models\cardp;
 use App\Models\customer;
 use App\Models\transact;
 use App\Models\order;
+use App\Models\authority;
 use App\Helpers\Jdate;
 use Verta;
 use App\Models\pro_city;
 require_once('nusoap.php');
 use nusoap_client;
+
 
 class CustomerController extends Controller
 {
@@ -93,16 +95,17 @@ class CustomerController extends Controller
         return view('customers.order',array('order'=>$order,'pro'=>$pro->name,'city'=>$city->name,'cardP'=>$cardP,'transAct'=>$transAct));
     }
     public function onlinePay(){
+        $order = customer::find(Session('customer')->id)->orders()->where('last_status',0)->get();
 
         $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';  //Required
-        $Amount = 1000; //Amount will be based on Toman  - Required
+        $Amount = ($order[0]->count)*200000; //Amount will be based on Toman  - Required
         $Description = 'توضیحات تراکنش تستی';  // Required
         $Email = 'UserEmail@Mail.Com'; // Optional
         $Mobile = '09123456789'; // Optional
         $CallbackURL = 'http://www.m0b.ir/verify.php';  // Required
 
         $client = new nusoap_client('https://www.zarinpal.com/pg/services/WebGate/wsdl', 'wsdl');
-       $client->soap_defencoding = 'UTF-8';
+        $client->soap_defencoding = 'UTF-8';
         $result = $client->call('PaymentRequest', [
             [
                 'MerchantID'     => $MerchantID,
@@ -113,14 +116,72 @@ class CustomerController extends Controller
                 'CallbackURL'    => $CallbackURL,
             ],
         ]);
-
         $status = false;
         $Authority = '';
-        if ($result->Status == 100) {
+        //if ($result['Status'] == '100') {
+        if ( '100' == '100') {
             $status = true;
-            $Authority = $result->Authority;
+            //$Authority = $result['Authority'];
+            $Authority = '654654sd@D@DH@^DDDDKD5456s55SDF';
+            $authority = new authority();
+            $authority->amount      = $Amount;
+            $authority->authority   = $Authority;
+            $authority->customer_id = Session('customer')->id;
+            $authority->order_id    = $order[0]->id;
+            $authority->save();
+
         }
         return ['status'=>$status,'Authority'=>$Authority];
+    }
+    public function payVerify(Request $request){
+        $authorityInf = authority::where('authority',$request->Authority)->get();
+        $v = new Verta();
+        $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';
+        $Amount = $authorityInf[0]->amount; //Amount will be based on Toman
+        $Authority = $request->Authority;
+        if ($request->Status == 'OK') {
+            $client = new nusoap_client('https://www.zarinpal.com/pg/services/WebGate/wsdl', 'wsdl');
+            $client->soap_defencoding = 'UTF-8';
+            $result = $client->call('PaymentVerification', [
+                [
+                    'MerchantID'     => $MerchantID,
+                    'Authority'      => $Authority,
+                    'Amount'         => $Amount,
+                ],
+            ]);
+
+            //if ($result['Status'] == 100) {
+            if ( 100 == 100 ) {
+                $status = '100';
+                 $order = order::find($authorityInf[0]->order_id);
+
+                 $transAct = new transact();
+                 $transAct->amount = $Amount;
+                 //$transAct->tran_id = $result['RefID'];
+                 $transAct->tran_id = '04242424277207';
+                 $transAct->pay_time = $v->formatTime();
+                 $transAct->pay_date = $v->formatJalaliDate();
+                 $transAct->pay_type = 1;
+                 $transAct->url_id = $order->url_id;
+                 $transAct->customer_id = $order->customer_id;
+                 $transAct->order_id = $order->id;
+                 $transAct->save();
+
+                 $order->last_status = 1;
+                 $order->save();
+
+            } else {
+                $status = '2';
+            }
+        }
+        else {
+            $status = '3';
+        }
+        $date = Jdate::medate();
+        $pros = pro_city::where('pro_id',0)->orderBy('id','ASC')->get();
+        $cities = pro_city::where('pro_id',Session('customer')->pro_id)->orderBy('id','ASC')->get();
+        $sales = customer::find(Session('customer')->id)->orders()->with('transact')->with('cardp')->get();
+        return view('customers.payVerified', array('date'=>Jdate::fn($date['date4']),'pros'=>$pros,'cities'=>$cities,'status'=>$status,'sales'=>$sales));
     }
 
 }

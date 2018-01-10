@@ -47,6 +47,7 @@ Route::group(['middleware' => ['checkCustomer']], function () {
     Route::post('/regCardP', 'customerController@regCardP');
     Route::post('/customerOrder', 'customerController@customerOrder');
     Route::post('/onlinePay', 'customerController@onlinePay');
+    Route::any('/payVerify', 'customerController@payVerify');
 
 });
 

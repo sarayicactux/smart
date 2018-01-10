@@ -17,6 +17,10 @@ class customer extends Model
     {
         return $this->hasMany('App\Models\order');
     }
+    public function authorities()
+    {
+        return $this->hasMany('App\Models\authority');
+    }
     public function transacts()
     {
         return $this->hasMany('App\Models\transact');

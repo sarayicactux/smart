@@ -12,6 +12,10 @@ class order extends Model
     {
         return $this->belongsTo('App\Models\url');
     }
+    public function authorities()
+    {
+        return $this->hasMany('App\Models\authority');
+    }
     public function customer()
     {
         return $this->belongsTo('App\Models\customer');

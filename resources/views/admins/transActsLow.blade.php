@@ -13,6 +13,7 @@
                 <td>نام و نام خانوادگی</td>
                 <td>شماره تماس</td>
                 <td>تاریخ تراکنش</td>
+                <td>مبلغ</td>
                 <td>نام نشانی </td>
                 <td> URL </td>
             </tr>
@@ -23,7 +24,8 @@
                     <td >{{ Jdate::fn($i)}}</td>
                     <td >{{ $transact->customer->name.' '.$transact->customer->family}}</td>
                     <td >{{ Jdate::fn($transact->customer->tel)}}</td>
-                    <td dir="ltr" >{{Jdate::fn(Verta::instance($transact->created_at))}}</td>
+                    <td dir="ltr" >{{Jdate::fn($transact->pay_date).' '.Jdate::fn($transact->pay_time)}}</td>
+                    <td dir="ltr" >{{Jdate::echoNum($transact->amount)}}</td>
                     <td dir="ltr" >{{$transact->url->name}}</td>
                     <td dir="ltr" >{{$transact->url->url}}</td>
                 </tr>

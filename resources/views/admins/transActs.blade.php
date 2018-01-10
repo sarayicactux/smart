@@ -33,11 +33,11 @@
         <tr align="center">
 <td >{{ Jdate::fn($i)}}</td>
 <td  >{{Jdate::echoNum($transAct->amount)}}</td>
-<td  >{{Jdate::echoNum($transAct->tran_id)}}</td>
-<td dir="ltr" >{{Jdate::echo_date($transAct->pay_date).' '.Jdate::echoNum($transAct->pay_time)}}</td>
+<td  >{{Jdate::fn($transAct->tran_id)}}</td>
+<td dir="ltr" >{{Jdate::fn($transAct->pay_date).' '.Jdate::fn($transAct->pay_time)}}</td>
 <td dir="ltr" >{{Jdate::fn(Verta::instance($transAct->order->created_at))}}</td>
 <td >{{$transAct->customer->name.' '.$transAct->customer->family}}</td>
-<td dir="ltr" >{{$transAct->order->tel}}</td>
+<td dir="ltr" >{{Jdate::fn($transAct->order->tel)}}</td>
 <td >{{$transAct->url->name.' '.$transAct->url->name}}</td>
 <td >@if($transAct->pay_type == 1)آنلاین
 @else کارت به کارت
