@@ -94,7 +94,7 @@
 
 
                 <li class="dropdown">
-                    <a href="#" onclick="postMenus('/urls');" >نشانی وب</a>
+                    <a href="#" onclick="postMenus('/urls');" >شناسه ها</a>
                 </li>
 
                 <li class="dropdown">

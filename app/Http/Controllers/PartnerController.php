@@ -53,6 +53,13 @@ class PartnerController extends Controller
         return view('partners.urlsLs',array('urls'=>$urls));
 
     }
+    public function checkUrl(Request $request){
+        $url = url::where('url',$request->url)->exists();
+        $ret = 1;
+        if ( $url ) $ret = 0;
+        return $ret;
+
+    }
     public function urlsAddEdit(Request $request){
         $partner = partner::find(session('partner')->id);
         if ($request->id == 0 ){

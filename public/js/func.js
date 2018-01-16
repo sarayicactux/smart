@@ -191,13 +191,18 @@ function ctrlAct(id,ctrlAct){
 			}
 function urls(id,name,description,url){
     var msg = '';
+
     if ( name == '' ){
 
         msg = ' نام وارد نشده';
     }
     else if ( url == '' ){
 
-        msg = ' نشانی وارد نشده';
+        msg = ' شناسه وارد نشده';
+    }
+    else if ( $('#urlC').val() == '0' ){
+
+        msg = ' شناسه وارد شده قبلا انتخاب شده و نامعتبر است';
     }
     else if ( description == '' ){
 
@@ -335,6 +340,21 @@ function checkEmail(email){
 
                 $('#emailC').val(data);
                 // $('#wait').fadeOut(100);
+            //  2pm
+        },"json");
+}
+function checkUrl(url){
+    //$('#wait').fadeIn(100);
+    $.post("index.php/checkUrl", {
+            url     : url,
+            _token : $('#_token').val(),
+        },
+        function(data){
+
+
+
+            $('#urlC').val(data);
+            // $('#wait').fadeOut(100);
             //  2pm
         },"json");
 }

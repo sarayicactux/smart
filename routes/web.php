@@ -25,6 +25,7 @@ return redirect('/');});
 Route::get('/partners', 'IndexController@index');
 Route::post('/cities', 'IndexController@cities');
 Route::post('/checkEmail', 'IndexController@checkEmail');
+
 Route::post('/checkMelicode', 'IndexController@checkMelicode');
 Route::post('/checkMobile', 'IndexController@checkMobile');
 Route::post('/regPartner', 'PartnerController@regPartner');
@@ -32,6 +33,7 @@ Route::post('/regCustomer', 'CustomerController@regCustomer');
 Route::post('/loginCustomer', 'CustomerController@loginCustomer');
 Route::post('/loginPartner', 'PartnerController@loginPartner');
 Route::group(['middleware' => ['checkPartner']], function () {
+    Route::post('/checkUrl', 'PartnerController@checkUrl');
     Route::post('/urls', 'PartnerController@urlsLs');
     Route::post('/changePass', 'PartnerController@changePass');
     Route::post('/urlsAddEdit', 'PartnerController@urlsAddEdit');

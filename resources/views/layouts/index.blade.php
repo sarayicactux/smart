@@ -81,7 +81,8 @@
                     <div align="center" style="font-weight: 900; color: #e02222; font-size: 26px">هوشیار سازه</div>
                     <br/>
                     <div align="center"  style="font-size: 16px; font-weight: bold">  اشکال هندسی ساده برای خلق هزاران سازه شگفت انگیز و پیچیده</div><br/>
-                    <div align="center"  style="font-size: 16px; font-weight: bold"> {{Jdate::fn('260')}} قطعه در {{Jdate::fn('9')}} شکل مختلف و در رنگهای متنوع</div><br/>
+                    <div align="center"  style="font-size: 16px; font-weight: bold"> {{Jdate::fn('260')}} قطعه در {{Jdate::fn('9')}} شکل مختلف و در رنگهای متنوع</div>
+                    <div align="center"  style="font-size: 16px; font-weight: bold"> قیمت فقط {{Jdate::echoNum('20000')}} تومان</div><br/>
                     {{Jdate::fn('1')}}-  کلیه مراحل طراحی، مواد اولیه،تولید و بسته بندی در داخل کشور انجام شده و محصول صد در صد داخلی بوده و تقلبی ، وارداتی یا قاچاق نیست.<br/>
                     {{Jdate::fn('2')}}-  ساخته شده از پلاستیک با کیفیت بالا ، طبیعی، بدون بو، مستحکم و با ماندگاری بالا، مقاوم در برابر تغییر شکل<br/>
                     {{Jdate::fn('3')}}-  سبک و لطیف، با لبه های نرم به گونه ای که به کودک هیچ آسیبی نمیرساند و کودک میتواند به راحتی قطعات را با دست به یکدیگر بفشارد.<br/>

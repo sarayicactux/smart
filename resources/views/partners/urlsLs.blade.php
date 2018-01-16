@@ -1,9 +1,11 @@
 <div class="container">
     <div class="panel panel-primary">
-        <div class="panel-heading">لیست نشانی های وب <button onclick="
+        <div class="panel-heading">لیست شناسه ها <button onclick="
 $('#url_id').val('0');
 $('#url').val('');
 $('#name').val('');
+$('#oldUrl').val('');
+$('#urlC').val('0');
 $('#description').val('');
 " type="button" data-toggle="modal" data-target="#newFLayer" class="btn btn-sm btn-success pull-left"><span class="glyphicon glyphicon-plus"></span>ثبت مورد جدید</button></div>
         <div class="panel-body" id="compLs">
@@ -22,7 +24,7 @@ $('#description').val('');
 <tr align="center">
 <td>ردیف</td>
 <td>نام</td>
-<td>URL</td>
+<td>شناسه</td>
 <td>توضیحات</td>
 <td>تاریخ ثبت</td>
 <td>بازدیدها</td>
@@ -53,7 +55,10 @@ $('#description').val('');
 <td  style="cursor:pointer"  data-toggle="modal" data-target="#editFLayer" onclick="
 $('#url_id').val('{{ $url->id}}');
 $('#url1').val('{{ $url->url}}');
+
 $('#name1').val('{{ $url->name}}');
+$('#oldUrl').val('{{ $url->url}}');
+$('#urlC').val('1');
 $('#description1').val('{{ $url->description}}');
 " >
 <img src="{{ asset('images/1edit.png')}}" height="18" width="18" />
@@ -80,7 +85,7 @@ $('#description1').val('{{ $url->description}}');
         <div class="modal-content">
             <div class="panel panel-primary"><div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="modal_plansedit">فرم ثبت نشانی جدید</h4>
+                    <h4 class="modal-title" id="modal_plansedit">فرم ثبت شناسه جدید</h4>
                 </div>
                 <div class="panel-body" id="replyDiv">
 
@@ -99,11 +104,11 @@ $('#description1').val('{{ $url->description}}');
                     </fieldset>
 
                     <fieldset>
-                        <legend><span>آدرس URL</span></legend>
+                        <legend><span>شناسه</span></legend>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="form-group" style="width:130px;" >
-                                    <input class="form-control input-sm" maxlength="120" size="40"  style="font-family:Tahoma; text-align:left" name="url"  id="url" type="text" />
+                                    <input class="form-control input-sm" onblur="checkUrl(this.value)"  maxlength="120" size="40"  style="font-family:Tahoma; text-align:left" name="url"  id="url" type="text" />
 
                                 </div>
                             </div>
@@ -142,7 +147,7 @@ $('#description1').val('{{ $url->description}}');
         <div class="modal-content">
             <div class="panel panel-primary"><div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="modal_plansedit">فرم ویرایش نشانی </h4>
+                    <h4 class="modal-title" id="modal_plansedit">فرم ویرایش شناسه </h4>
                 </div>
                 <div class="panel-body" id="replyDiv">
 
@@ -161,11 +166,12 @@ $('#description1').val('{{ $url->description}}');
                     </fieldset>
 
                     <fieldset>
-                        <legend><span>آدرس URL</span></legend>
+                        <legend><span>شناسه </span></legend>
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="form-group" style="width:130px;">
-                                    <input class="form-control input-sm" maxlength="120" size="40" style="font-family:Tahoma; text-align:left" name="url1"  id="url1" type="text" />
+                                    <input type="hidden" id="oldUrl" >
+                                    <input class="form-control input-sm" onkeyup="if (this.value != $('#oldUrl').val()) checkUrl(this.value); else $('#urlC').val('1');"  maxlength="120" size="40" style="font-family:Tahoma; text-align:left" name="url1"  id="url1" type="text" />
 
                                 </div>
                             </div>
@@ -200,3 +206,4 @@ $('#description1').val('{{ $url->description}}');
 </div>
 
 <input type="hidden" id="url_id" value="0" />
+<input type="hidden" value="0" id="urlC"/>
