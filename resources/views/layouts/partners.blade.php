@@ -71,7 +71,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style="color:#ffffff"> {{ session ('partner')->name.' '.session ('partner')->family }} خوش آمدید<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li ><a href="#">تغییر رمز</a></li>
+                        <li ><a href="#"  data-toggle="modal" data-target="#modalChangePass" >تغییر رمز</a></li>
                         <li ></li>
 
                     </ul>
@@ -149,6 +149,69 @@
 </div>
 <div id="LayerDiv">
 
+</div>
+<div class="modal fade" id="modalChangePass" tabindex="-1" role="dialog" aria-labelledby="modalChangePass">
+
+    <div class="modal-dialog modal-sm" role="document" style="width:400px">
+        <div class="modal-content" >
+            <div class="panel panel-primary"><div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal_plansedit">تغییر رمز ورود</h4>
+                </div>
+                <div class="panel-body" id="changePassDiv">
+
+
+                    <fieldset>
+                        <legend><span>رمز عبور فعلی </span></legend>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group" style="width:130px;">
+                                    <input class="form-control input-sm"  maxlength="100" dir="ltr" size="40" name="oldPass"  id="oldPass" type="password" />
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><span>رمز عبور جدید</span></legend>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group" style="width:130px;" >
+                                    <input class="form-control input-sm" maxlength="120" size="40" dir="ltr" name="newPass"  id="newPass" type="password" />
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend><span>تکرار رمز عبور جدید</span></legend>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group" style="width:130px;" >
+                                    <input class="form-control input-sm" maxlength="120" size="40"  dir="ltr" name="cNewPass"  id="cNewPass" type="password" />
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+
+
+
+
+
+
+
+                    <div align="left" style="padding-left:10px"><button type="button"     class="btn btn-primary" onclick="changePass($('#oldPass').val(),$('#newPass').val(),$('#cNewPass').val())">ثبت اطلاعات</button></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 </body>
 </html>

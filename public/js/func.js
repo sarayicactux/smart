@@ -199,6 +199,10 @@ function urls(id,name,description,url){
 
         msg = ' نشانی وارد نشده';
     }
+    else if ( description == '' ){
+
+        msg = ' توضیحات وارد نشده';
+    }
 
     if ( msg != '' ){
         $('#err_msg').html(msg);
@@ -224,6 +228,51 @@ function urls(id,name,description,url){
                 $('.modal-backdrop').fadeOut(100);
                 $('#bg').fadeOut(100);
                 $('#wait').fadeOut(100);
+            });
+    }
+}
+function changePass(oldPass,newPass,cNewPass){
+    var msg = '';
+    if ( oldPass == '' ){
+
+        msg = ' رمز عبور فعلی وارد نشده';
+    }
+    else if ( newPass == '' ){
+
+        msg = ' رمز عبور جدید وارد نشده';
+    }
+    else if ( cNewPass == '' ){
+
+        msg = ' تکرار رمز عبور جدید وارد نشده';
+    }
+    else if ( cNewPass != newPass ){
+
+        msg = ' رمز عبور جدید و تکرار رمز عبور جدید یکسان نیست';
+    }
+
+
+    if ( msg != '' ){
+        $('#err_msg').html(msg);
+        $('#bg').fadeIn(100,function(){
+            $('#alerts').fadeIn(200);
+        });
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/changePass", {
+                newPass		:	newPass,
+                oldPass		:	oldPass,
+                _token      : $('#_token').val(),
+            },
+            function(data){
+
+                $('#changePassDiv').html('رمز عبور با موفقیت به روز رسانی شد');
+                $('#bg').fadeOut(100);
+                $('#wait').fadeOut(100);
+
             });
     }
 }

@@ -21,9 +21,14 @@ class visitController extends Controller
     public function index(Request $request){
        // Session::forget('customer');
         $v = verta();
-       // setcookie('referer', $_SERVER['HTTP_REFERER'], time() + (86400 * 30), "/");
+       // setcookie('referer', $request->u, time() + (86400 * 30), "/");
       //  unset($_COOKIE['referer']);
       // echo $_COOKIE['referer'];
+        if (isset($request->u)){
+            unset($_COOKIE['referer']);
+            setcookie('referer', $request->u, time() + (86400 * 30), "/");
+
+        }
         if ( Session::has('customer') ){
             $date = Jdate::medate();
             $pros = pro_city::where('pro_id',0)->orderBy('id','ASC')->get();
@@ -55,16 +60,16 @@ class visitController extends Controller
                 }
             }
             else {
-                if (isset($_SERVER['HTTP_REFERER'])){
+                if (isset($request->u)){
 
-                    $url = url::where('url','like',$_SERVER['HTTP_REFERER'])->get();
+                    $url = url::where('url','like',$request->u)->get();
                     // var_dump($url);
                     if (count($url) > 0){
 
-                        setcookie('referer', $_SERVER['HTTP_REFERER'], time() + (86400 * 30), "/");
+                        setcookie('referer', $request->u, time() + (86400 * 30), "/");
                         $url = url::find($url[0]->id);
                         $url->visits()->create([
-                            'url_ref'   =>$_SERVER['HTTP_REFERER'],
+                            'url_ref'   =>$request->u,
                             'visit_time'=>$v->hour.':'.$v->minute.':'.$v->second,
                             'visit_date'=>$v->year.'/'.$v->month.'/'.$v->day
                         ]);
@@ -73,13 +78,13 @@ class visitController extends Controller
                     else {
                         $url = url::find(1);
                         $url->visits()->create([
-                            'url_ref'   =>$_SERVER['HTTP_REFERER'],
+                            'url_ref'   =>$request->u,
                             'visit_time'=>$v->hour.':'.$v->minute.':'.$v->second,
                             'visit_date'=>$v->year.'/'.$v->month.'/'.$v->day
                         ]);
                         session([
                             'url_id'=>$url->id,
-                            'url_ref'=>$_SERVER['HTTP_REFERER']
+                            'url_ref'=>$request->u
                         ]);
 
                     }
@@ -104,8 +109,8 @@ class visitController extends Controller
         }
 
     }
-    public function myUrl(){
+    public function myUrl(Request $request){
 
-        if (isset($_SERVER['HTTP_REFERER'])) echo "You Referer URL Is : ".$_SERVER['HTTP_REFERER'];
+        if (isset($request->u)) echo "You Referer URL Is : ".$request->u;
     }
 }

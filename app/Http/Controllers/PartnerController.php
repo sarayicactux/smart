@@ -39,6 +39,13 @@ class PartnerController extends Controller
 
         return array('status'=>$log);
     }
+    public function changePass(Request $request){
+        $partner = partner::find(session('partner')->id);
+        if ($request->oldPass == $partner->password){
+            $partner->password = $request->newPass;
+            $partner->save();
+        }
+    }
     public function urlsLs(){
         $partner = partner::find(session('partner')->id);
         $urls = $partner->urls()->get();

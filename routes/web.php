@@ -17,8 +17,8 @@ Auth::routes();
 Route::get('/', 'visitController@index')->name('home');
 Route::get('/myUrl', 'visitController@myUrl');
 Route::get('/home', 'HomeController@index');
-Route::get('/admin', 'indexController@admin');
-Route::post('/Adlogin', 'indexController@Adlogin');
+Route::get('/admin', 'IndexController@admin');
+Route::post('/Adlogin', 'IndexController@Adlogin');
 Route::get('/logOut',function (){Session::forget('partner');Session::forget('customer');
     Auth::logout();
 return redirect('/');});
@@ -33,6 +33,7 @@ Route::post('/loginCustomer', 'CustomerController@loginCustomer');
 Route::post('/loginPartner', 'PartnerController@loginPartner');
 Route::group(['middleware' => ['checkPartner']], function () {
     Route::post('/urls', 'PartnerController@urlsLs');
+    Route::post('/changePass', 'PartnerController@changePass');
     Route::post('/urlsAddEdit', 'PartnerController@urlsAddEdit');
     Route::post('/partners/visits', 'PartnerController@visitsLow');
     Route::post('/partners/transActs', 'PartnerController@transActsLow');

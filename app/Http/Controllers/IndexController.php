@@ -64,6 +64,7 @@ class IndexController extends Controller
     public function admin(){
     if (Auth::check()) {
         $date = Jdate::medate();
+
         return view('layouts.admins',array('date'=>Jdate::fn($date['date4'])));
     }
     else{
