@@ -46,6 +46,13 @@ class PartnerController extends Controller
             $partner->save();
         }
     }
+    public function cardNum(Request $request){
+        $partner = partner::find(session('partner')->id);
+            $partner->card_num = $request->card_num;
+            session ('partner')->card_num = $request->card_num;
+            $partner->save();
+
+    }
     public function urlsLs(){
         $partner = partner::find(session('partner')->id);
         $urls = $partner->urls()->get();

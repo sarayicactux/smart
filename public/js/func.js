@@ -281,6 +281,42 @@ function changePass(oldPass,newPass,cNewPass){
             });
     }
 }
+function cardNum(card_num){
+    var msg = '';
+    if ( card_num == '' ){
+
+        msg = ' لطفا شماره کارت بانکی را وارد کنید';
+    }
+    else if ( card_num.length  < 16 ){
+
+        msg = ' شماره کارت وارد شده نا معتبر است';
+    }
+
+
+    if ( msg != '' ){
+        $('#err_msg').html(msg);
+        $('#bg').fadeIn(100,function(){
+            $('#alerts').fadeIn(200);
+        });
+
+    }
+    else {
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/cardNum", {
+                card_num	:	card_num,
+                _token      : $('#_token').val(),
+            },
+            function(data){
+
+                $('#cardNumDiv').html('شماره کارت بانکی با موفقیت به روز رسانی شد');
+                $('#bg').fadeOut(100);
+                $('#wait').fadeOut(100);
+
+            });
+    }
+}
 function payRq(amount,description){
     var msg = '';
     if ( amount == '' ){

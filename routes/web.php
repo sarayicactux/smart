@@ -19,6 +19,7 @@ Route::get('/myUrl', 'visitController@myUrl');
 Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'IndexController@admin');
 Route::post('/Adlogin', 'IndexController@Adlogin');
+Route::any('/payVerify', 'CustomerController@payVerify');
 Route::get('/logOut',function (){Session::forget('partner');Session::forget('customer');
     Auth::logout();
 return redirect('/');});
@@ -36,6 +37,7 @@ Route::group(['middleware' => ['checkPartner']], function () {
     Route::post('/checkUrl', 'PartnerController@checkUrl');
     Route::post('/urls', 'PartnerController@urlsLs');
     Route::post('/changePass', 'PartnerController@changePass');
+    Route::post('/cardNum', 'PartnerController@cardNum');
     Route::post('/urlsAddEdit', 'PartnerController@urlsAddEdit');
     Route::post('/partners/visits', 'PartnerController@visitsLow');
     Route::post('/partners/transActs', 'PartnerController@transActsLow');
@@ -46,11 +48,11 @@ Route::group(['middleware' => ['checkPartner']], function () {
     Route::post('/partners/payRqInf', 'PartnerController@payRqInf');
 });
 Route::group(['middleware' => ['checkCustomer']], function () {
-    Route::post('/regOrder', 'customerController@regOrder');
-    Route::post('/regCardP', 'customerController@regCardP');
-    Route::post('/customerOrder', 'customerController@customerOrder');
-    Route::post('/onlinePay', 'customerController@onlinePay');
-    Route::any('/payVerify', 'customerController@payVerify');
+    Route::post('/regOrder', 'CustomerController@regOrder');
+    Route::post('/regCardP', 'CustomerController@regCardP');
+    Route::post('/customerOrder', 'CustomerController@customerOrder');
+    Route::post('/onlinePay', 'CustomerController@onlinePay');
+
 
 });
 
@@ -62,27 +64,27 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
-    Route::post('/partners', 'adminController@partnersLs');
-    Route::post('/urls', 'adminController@urlsLs');
-    Route::post('/visitsLow', 'adminController@visitsLow');
-    Route::post('/customersLow', 'adminController@customersLow');
-    Route::post('/ordersLow', 'adminController@ordersLow');
-    Route::post('/transActsLow', 'adminController@transActsLow');
-    Route::post('/allUrls', 'adminController@allUrls');
-    Route::post('/visitsLowUrl', 'adminController@visitsLowUrl');
-    Route::post('/customersLowUrl', 'adminController@customersLowUrl');
-    Route::post('/ordersLowUrl', 'adminController@ordersLowUrl');
-    Route::post('/transActsLowUrl', 'adminController@transActsLowUrl');
-    Route::post('/visits', 'adminController@visits');
-    Route::post('/orders', 'adminController@orders');
-    Route::post('/transActs', 'adminController@transActs');
-    Route::post('/cardPs', 'adminController@cardPs');
-    Route::post('/changeCardp', 'adminController@changeCardp');
-    Route::post('/orderInf', 'adminController@orderInf');
-    Route::post('/customers', 'adminController@customers');
-    Route::post('/costomerOrders', 'adminController@costomerOrders');
-    Route::post('/costomerTransActs', 'adminController@costomerTransActs');
-    Route::post('/payRq', 'adminController@payRq');
+    Route::post('/partners', 'AdminController@partnersLs');
+    Route::post('/urls', 'AdminController@urlsLs');
+    Route::post('/visitsLow', 'AdminController@visitsLow');
+    Route::post('/customersLow', 'AdminController@customersLow');
+    Route::post('/ordersLow', 'AdminController@ordersLow');
+    Route::post('/transActsLow', 'AdminController@transActsLow');
+    Route::post('/allUrls', 'AdminController@allUrls');
+    Route::post('/visitsLowUrl', 'AdminController@visitsLowUrl');
+    Route::post('/customersLowUrl', 'AdminController@customersLowUrl');
+    Route::post('/ordersLowUrl', 'AdminController@ordersLowUrl');
+    Route::post('/transActsLowUrl', 'AdminController@transActsLowUrl');
+    Route::post('/visits', 'AdminController@visits');
+    Route::post('/orders', 'AdminController@orders');
+    Route::post('/transActs', 'AdminController@transActs');
+    Route::post('/cardPs', 'AdminController@cardPs');
+    Route::post('/changeCardp', 'AdminController@changeCardp');
+    Route::post('/orderInf', 'AdminController@orderInf');
+    Route::post('/customers', 'AdminController@customers');
+    Route::post('/costomerOrders', 'AdminController@costomerOrders');
+    Route::post('/costomerTransActs', 'AdminController@costomerTransActs');
+    Route::post('/payRq', 'AdminController@payRq');
     Route::post('/payRqInf', 'AdminController@payRqInf');
     Route::post('/regPayRqRes', 'AdminController@regPayRqRes');
 

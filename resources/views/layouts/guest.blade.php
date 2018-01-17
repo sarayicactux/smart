@@ -76,13 +76,24 @@
     <table align="center">
 
         <tr dir="rtl">
-            <td style=" background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top">
-                <div id="btns" class="btns" style="padding: 120px;" >
-                    {{Jdate::fn('30')}} درصد پورسانت فروش<br/>
-                    حداقل مبلغ جهت واریز {{Jdate::echoNum('60000')}} تومان <br/>
-                    <br/><br/>
+            <td style="padding: 10px; background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top">
+                <div id="btns" class="btns"  >
+                    <div align="center" style="font-weight: 900; color: #e02222; font-size: 26px">هوشیار سازه</div>
+                    <br/>
+                    <div align="center"  style="font-size: 16px; font-weight: bold">  اشکال هندسی ساده برای خلق هزاران سازه شگفت انگیز و پیچیده</div><br/>
+                    <div align="center"  style="font-size: 16px; font-weight: bold"> بدون نیاز به سرمایه گذاری و مهارت خاص کسب درآمد کنید</div>
+                    <div align="center"  style="font-size: 16px; font-weight: bold"> قیمت فقط {{Jdate::echoNum('20000')}} تومان</div><br/>
+                    {{Jdate::fn('1')}}- ثبت نام کنید .<br/>
+                    {{Jdate::fn('2')}}-  شناسه یا شناسه های خود را ایجاد کنید<br/>
+                    {{Jdate::fn('3')}}-  لینک اختصاصی خود را در صفحات مجازی تبلیغ کنید.<br/>
+                    {{Jdate::fn('4')}}-  {{Jdate::fn('30')}} درصد از مبلغ هر فروش را به عنوان پورسانت فروش، دریافت  کنید.<br/>
+                    {{Jdate::fn('5')}}-  در پنل کاربری خود، آمار بازدید، سفارش و فروش خود را مشاهده کنید.درخواست دریافت وجه پورسانت ارسال کنید و صورتحسابهای مالی خود را پیگیری کنید.<br/>
+                    {{Jdate::fn('6')}}-  توجه داشته باشید که تسویه حساب  حداقل به ازای هر {{Jdate::fn('10')}} فروش (به مبلغ {{Jdate::echoNum('60000')}} تومان) و حداکثر طی {{Jdate::fn('2')}} روز کاری خواهد بود
+
+                    <br/><br/><br/><div align="center">
                     <button onclick="$('#btns').slideUp(300);$('#regFrm').slideDown(300)" class="btn btn-primary">ثبت نام</button>
                     <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ورود</button>
+                    </div>
                 </div>
                 <div id="regFrm" class="Frms" style="display: none">
                     <br><br>
@@ -219,7 +230,7 @@ checkEmail(this.value)"   id="email" type="text" />
                                     <div class="form-group">
                                         <label class="control-label col-md-8"  style="padding:2px">شماره کارت شتاب</label>
                                         <div class="col-md-10">
-                                            <input class="form-control input-sm" onkeypress="return isNumberKey(event)" maxlength="16"  name="card_num"   id="card_num" type="text" />
+                                            <input class="form-control input-sm" dir="ltr" onkeypress="return isNumberKey(event)" maxlength="16"  name="card_num"   id="card_num" type="text" />
                                         </div>
                                     </div>
                                 </div>

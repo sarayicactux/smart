@@ -39,7 +39,7 @@ $('#description').val('');
         <tr align="center">
 <td >{{ Jdate::fn($i)}}</td>
 <td >{{$url->name}}</td>
-<td dir="ltr" >{{$url->url}}</td>
+<td dir="ltr" >www.smartstick.ir/?u={{$url->url}}</td>
 <td >{{$url->description}}</td>
 <td >{{Jdate::fn(Verta::instance($url->created_at))}}</td>
 <td style="cursor:pointer"   data-toggle="modal" data-target="#modalLayer" onclick="ctrlAct('{{ $url->id}}','partners/visits')">
@@ -105,9 +105,14 @@ $('#description1').val('{{ $url->description}}');
 
                     <fieldset>
                         <legend><span>شناسه</span></legend>
-                        <div class="row">
+                        <div class="row"><div style="padding: 4px">
+                            به عنوان مثال در صورتی که شناسه شما MySmartId باشد، لینک اختصاصی شما به صورت زیر خواهد بود<br>
+
+                            www.smartstick.ir/?u=MySmartId</div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
                                 <div class="form-group" style="width:130px;" >
+
                                     <input class="form-control input-sm" onblur="checkUrl(this.value)"  maxlength="120" size="40"  style="font-family:Tahoma; text-align:left" name="url"  id="url" type="text" />
 
                                 </div>
@@ -167,10 +172,14 @@ $('#description1').val('{{ $url->description}}');
 
                     <fieldset>
                         <legend><span>شناسه </span></legend>
-                        <div class="row">
+                        <div class="row"> <div style="padding: 4px">
+                                    به عنوان مثال در صورتی که شناسه شما MySmartId باشد، لینک اختصاصی شما به صورت زیر خواهد بود<br>
+
+                                    www.smartstick.ir/?u=MySmartId</div>
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="form-group" style="width:130px;">
                                     <input type="hidden" id="oldUrl" >
+
                                     <input class="form-control input-sm" onkeyup="if (this.value != $('#oldUrl').val()) checkUrl(this.value); else $('#urlC').val('1');"  maxlength="120" size="40" style="font-family:Tahoma; text-align:left" name="url1"  id="url1" type="text" />
 
                                 </div>

@@ -82,22 +82,35 @@
                             <div align="center" style="font-weight: 900; color: #e02222; font-size: 26px">هوشیار سازه</div>
                             <br/>
                             @if($status == '100')
-                                <div align="center"  style="font-size: 16px; font-weight: bold"> با تشکر از خرید شما، محصول خریداری شده در اسرع وقت ارسال خواهد شد</div>
+                                <div align="center"  style="font-size: 16px; font-weight: bold">
+
+                                    با تشکر از خرید شما، محصول خریداری شده در اسرع وقت ارسال خواهد شد</div>
+                                <div align="center">
+
+                                    <button onclick="document.location = 'http://www.smartstick.ir';" class="btn btn-primary">صفحه اصلی</button>
+                                    <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">پیگیری سفارش</button></div>
                                 @elseif($status == '2')
                                 <div align="center"  style="font-size: 16px; font-weight: bold">متاسفانه عملیات پرداخت با موفقیت انجام نشد
                                 <br/>
-                                در صورت کسر وجه از حساب شما، حداکثر تا 72 ساعت، مبلغ به حساب برگردانده خواهد شد
+                                    <br/>  در صورت کسر وجه از حساب شما، حداکثر تا 72 ساعت، مبلغ به حساب برگردانده خواهد شد
+                                    <div align="center">
+
+                                        <button onclick="document.location = 'http://www.smartstick.ir';" class="btn btn-primary">صفحه اصلی</button>
+                                        <button onclick="onlinePay()" class="btn btn-primary">تلاش مجدد</button>
+                                        <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">پیگیری سفارش</button></div>
                                 </div>
 
                                 @else
                                 <div align="center"  style="font-size: 16px; font-weight: bold">عملیات پرداخت توسط مشتری متوقف شده</div>
+                                <div align="center">
 
+                                    <button onclick="document.location = 'http://www.smartstick.ir';" class="btn btn-primary">صفحه اصلی</button>
+                                    <button onclick="onlinePay()" class="btn btn-primary">تلاش مجدد</button>
+                                    <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">پیگیری سفارش</button></div>
+                        </div>
                                 @endif
                             <br/><br/>
-                           <div align="center">
 
-                    <button onclick="$('#btns').slideUp(300);$('#orderFrm').slideDown(300)" class="btn btn-primary">ثبت سفارش</button>
-                                <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">پیگیری سفارش</button></div>
                 </div>
                 <div id="orderFrm" class="Frms" style="display: none">
 

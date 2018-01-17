@@ -97,12 +97,13 @@ class CustomerController extends Controller
     public function onlinePay(){
         $order = customer::find(Session('customer')->id)->orders()->where('last_status',0)->get();
 
-        $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';  //Required
-        $Amount = ($order[0]->count)*200000; //Amount will be based on Toman  - Required
-        $Description = 'توضیحات تراکنش تستی';  // Required
-        $Email = 'UserEmail@Mail.Com'; // Optional
-        $Mobile = '09123456789'; // Optional
-        $CallbackURL = 'http://www.m0b.ir/verify.php';  // Required
+        $MerchantID = '8c286b76-facb-11e7-9502-005056a205be';  //Required
+        $Amount = ($order[0]->count)*20000; //Amount will be based on Toman  - Required
+        //$Amount = 100;
+        $Description = 'خرید هوشیار سازه';  // Required
+        $Email = 'sarayi.cactux@gmail.Com'; // Optional
+        $Mobile = Session('customer')->mobile; // Optional
+        $CallbackURL = 'http://smartstick.ir/payVerify';  // Required
 
         $client = new nusoap_client('https://www.zarinpal.com/pg/services/WebGate/wsdl', 'wsdl');
         $client->soap_defencoding = 'UTF-8';
@@ -118,11 +119,11 @@ class CustomerController extends Controller
         ]);
         $status = false;
         $Authority = '';
-        //if ($result['Status'] == '100') {
-        if ( '100' == '100') {
+        if ($result['Status'] == '100') {
+        //if ( '100' == '100') {
             $status = true;
-            //$Authority = $result['Authority'];
-            $Authority = '654654sd@D@DH@^DDDDKD5456s55SDF';
+            $Authority = $result['Authority'];
+           // $Authority = '654654sd@D@DH@^DDDDKD5456s55SDF';
             $authority = new authority();
             $authority->amount      = $Amount;
             $authority->authority   = $Authority;
@@ -136,7 +137,7 @@ class CustomerController extends Controller
     public function payVerify(Request $request){
         $authorityInf = authority::where('authority',$request->Authority)->get();
         $v = new Verta();
-        $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';
+        $MerchantID = '8c286b76-facb-11e7-9502-005056a205be';
         $Amount = $authorityInf[0]->amount; //Amount will be based on Toman
         $Authority = $request->Authority;
         if ($request->Status == 'OK') {
@@ -150,15 +151,15 @@ class CustomerController extends Controller
                 ],
             ]);
 
-            //if ($result['Status'] == 100) {
-            if ( 100 == 100 ) {
+            if ($result['Status'] == 100) {
+            //if ( 100 == 100 ) {
                 $status = '100';
                  $order = order::find($authorityInf[0]->order_id);
 
                  $transAct = new transact();
                  $transAct->amount = $Amount;
-                 //$transAct->tran_id = $result['RefID'];
-                 $transAct->tran_id = '04242424277207';
+                 $transAct->tran_id = $result['RefID'];
+                 //$transAct->tran_id = '04242424277207';
                  $transAct->pay_time = $v->formatTime();
                  $transAct->pay_date = $v->formatJalaliDate();
                  $transAct->pay_type = 1;

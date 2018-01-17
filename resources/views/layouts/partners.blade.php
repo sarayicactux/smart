@@ -96,6 +96,9 @@
                 <li class="dropdown">
                     <a href="#" onclick="postMenus('/urls');" >شناسه ها</a>
                 </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="modal" data-target="#modalCardNum"" >کارت بانکی</a>
+                </li>
 
                 <li class="dropdown">
                     <a href="#" onclick="postMenus('/bills');" > صورتحساب ها</a>
@@ -207,6 +210,47 @@
 
 
                     <div align="left" style="padding-left:10px"><button type="button"     class="btn btn-primary" onclick="changePass($('#oldPass').val(),$('#newPass').val(),$('#cNewPass').val())">ثبت اطلاعات</button></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCardNum" tabindex="-1" role="dialog" aria-labelledby="modalCardNum">
+
+    <div class="modal-dialog modal-sm" role="document" style="width:400px">
+        <div class="modal-content" >
+            <div class="panel panel-primary"><div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal_plansedit">کارت بانکی</h4>
+                </div>
+                <div class="panel-body" id="cardNumDiv">
+
+
+                    <fieldset>
+                        <legend><span>شماره کارت بانکی </span></legend>
+                        <div class="row">
+                            <div style="padding: 4px">شماره کارت بانکی خود را به صورت عدد 16 رقمی، وارد کنید</div>
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="form-group" style="width:200px;">
+                                    <input class="form-control input-sm" value="{{session ('partner')->card_num}}"  maxlength="16" onkeypress="return isNumberKey(event)" dir="ltr" size="40" name="card_num"  id="card_num" type="text" />
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+
+
+
+
+
+
+
+
+
+                    <div align="left" style="padding-left:10px"><button type="button"     class="btn btn-primary" onclick="cardNum($('#card_num').val())">ثبت اطلاعات</button></div>
                 </div>
             </div>
 
