@@ -118,6 +118,9 @@
                     <a href="#" onclick="postMenus('admin/customers');" >مشتریان</a>
                 </li>
                 <li class="dropdown">
+                    <a href="#" onclick="postMenus('admin/sendList');" >لیست ارسال</a>
+                </li>
+                <li class="dropdown">
 
                     <a href="/logOut" >خروج</a>
 

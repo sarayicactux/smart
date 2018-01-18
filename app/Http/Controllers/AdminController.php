@@ -13,6 +13,8 @@ use App\Models\order;
 use App\Models\paypart;
 use App\Models\payrq;
 use App\Models\cardp;
+use App\Models\printact;
+use App\Models\printed;
 use App\Helpers\Jdate;
 use Verta;
 class AdminController extends Controller
@@ -204,5 +206,30 @@ class AdminController extends Controller
                     $payPart->save();
             }
             return $this->payRq();
+    }
+    public function sendList(){
+        $printacts = printact::orderBy('id','DESC')->limit(1000)->get();
+
+        return view('admins.printacts',array('printacts'=>$printacts));
+    }
+    public function newPrintLs(){
+        $orders = order::all()->where('send',0)->where('last_status',1 );
+        $printact = new printact();
+        $printact->save();
+
+        foreach ($orders as $order){
+                $order->send = 1;
+                $order->save();
+                $printed = new printed();
+                $printed->order_id = $order->id;
+                $printact->printeds()->save($printed);
+        }
+
+        return self::sendList();
+    }
+    public function printList($id){
+        $printeds = printed::all()->where('printact_id',$id);
+        return view('admins.printList',array('printeds'=>$printeds));
+
     }
 }

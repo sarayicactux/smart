@@ -16,6 +16,10 @@ class order extends Model
     {
         return $this->hasMany('App\Models\authority');
     }
+    public function printed()
+    {
+        return $this->hasOne('App\Models\printed');
+    }
     public function customer()
     {
         return $this->belongsTo('App\Models\customer');

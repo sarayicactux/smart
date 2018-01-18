@@ -87,5 +87,8 @@ Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
     Route::post('/payRq', 'AdminController@payRq');
     Route::post('/payRqInf', 'AdminController@payRqInf');
     Route::post('/regPayRqRes', 'AdminController@regPayRqRes');
+    Route::post('/sendList', 'AdminController@sendList');
+    Route::post('/newPrintLs', 'AdminController@newPrintLs');
+    Route::get('/printList/{id}', 'AdminController@printList');
 
 });

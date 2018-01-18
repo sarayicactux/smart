@@ -236,6 +236,24 @@ function urls(id,name,description,url){
             });
     }
 }
+function newPrintLs(){
+
+
+
+        $('#bg').fadeIn(100);
+        $('#wait').fadeIn(100);
+        $.post("index.php/admin/newPrintLs", {
+
+                _token  : $('#_token').val(),
+            },
+            function(data){
+                $('#AdminDiv').html(data);
+                $("body").removeClass("modal-open");
+                $('.modal-backdrop').fadeOut(100);
+                $('#bg').fadeOut(100);
+                $('#wait').fadeOut(100);
+            });
+}
 function changePass(oldPass,newPass,cNewPass){
     var msg = '';
     if ( oldPass == '' ){
