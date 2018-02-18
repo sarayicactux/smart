@@ -19,6 +19,7 @@ use nusoap_client;
 class visitController extends Controller
 {
     public function index(Request $request){
+
        // Session::forget('customer');
         $v = verta();
        // setcookie('referer', $request->u, time() + (86400 * 30), "/");

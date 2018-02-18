@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "23960f7b6d68f480705f6508d2410986",
+    "content-hash": "76144dde9be170fce84ac9c32f554862",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1351,6 +1351,70 @@
                 "uuid"
             ],
             "time": "2017-09-22T20:46:04+00:00"
+        },
+        {
+            "name": "seongbae/keywordrank",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/seongbae/keywordrank.git",
+                "reference": "3c4f0aa721f891731cd815676cd4a8df49ddb7cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/seongbae/keywordrank/zipball/3c4f0aa721f891731cd815676cd4a8df49ddb7cd",
+                "reference": "3c4f0aa721f891731cd815676cd4a8df49ddb7cd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "frameworks": [
+                    "Laravel 5.5"
+                ],
+                "laravel": {
+                    "providers": [
+                        "seongbae\\KeywordRank\\KeywordRankServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "seongbae\\KeywordRank\\": "src/"
+                },
+                "files": [
+                    "src/Libs/simple_html_dom.php",
+                    "src/Helpers/KeywordRankHelper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Seong Bae",
+                    "email": "seong@lnidigital.com"
+                }
+            ],
+            "description": "A Laravel package for getting keyword positions from Google",
+            "keywords": [
+                "console",
+                "google",
+                "keywords",
+                "laravel",
+                "rank",
+                "search"
+            ],
+            "time": "2018-01-14T16:31:45+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

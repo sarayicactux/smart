@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 use App\Helpers\Jdate;
 use App\Models\pro_city;
 use App\Models\partner;
+use App\Models\keyword;
 use Session;
 use Auth;
+use App\Models\rank;
+require_once('RankChecker.class.php');
+use GoogleRankChecker;
 
 
 
@@ -45,6 +49,45 @@ class IndexController extends Controller
         $ret = 1;
         if ( $email ) $ret = 0;
         return $ret;
+
+    }
+    public function google(){
+
+        $newGoogleRankChecker   = new GoogleRankChecker();
+        $useproxies             = false;
+        $arrayproxies           = [];
+        //require("google/index2.php");
+
+
+        $items = keyword::all();
+        foreach ($items as $item){
+            $newquery               = $item;
+
+            $googledata             = $newGoogleRankChecker->find($newquery, $useproxies, $arrayproxies);
+
+
+            foreach ($googledata as $result) {
+                $rank = New rank();
+                $rank->keyword = $newquery;
+                $rank->rank = $result['rank'];
+                $rank->url = $result['url'];
+                $rank->save();
+
+            }
+            $time = rand(40,65);
+            sleep($time);
+
+        }
+    }
+    public function googleNum($num){
+
+        $newGoogleRankChecker   = new GoogleRankChecker();
+        $useproxies             = false;
+        $arrayproxies           = [];
+
+
+            require("google/index1.php");
+
 
     }
     public function checkMobile(Request $request){

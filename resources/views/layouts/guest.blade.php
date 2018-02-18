@@ -73,16 +73,14 @@
 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
 <div class="container"  id="AdminDiv">
-    <table align="center">
+    <table align="center" width="1000px">
 
         <tr dir="rtl">
             <td style="padding: 10px; background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top">
                 <div id="btns" class="btns"  >
-                    <div align="center" style="font-weight: 900; color: #e02222; font-size: 26px">هوشیار سازه</div>
-                    <br/>
-                    <div align="center"  style="font-size: 16px; font-weight: bold">  اشکال هندسی ساده برای خلق هزاران سازه شگفت انگیز و پیچیده</div><br/>
-                    <div align="center"  style="font-size: 16px; font-weight: bold"> بدون نیاز به سرمایه گذاری و مهارت خاص کسب درآمد کنید</div>
-                    <div align="center"  style="font-size: 16px; font-weight: bold"> قیمت فقط {{Jdate::echoNum('20000')}} تومان</div><br/>
+                    <div align="center" style="font-weight: 900; color: #ffffff; font-size: 20px">هوشیار سازه</div>
+<br>
+                    <div align="center"  style="font-size: 32px; color: #0d1217; font-weight: bold"> بدون نیاز به سرمایه گذاری و مهارت خاص کسب درآمد کنید</div><br>
                     {{Jdate::fn('1')}}- ثبت نام کنید .<br/>
                     {{Jdate::fn('2')}}-  شناسه یا شناسه های خود را ایجاد کنید<br/>
                     {{Jdate::fn('3')}}-  لینک اختصاصی خود را در صفحات مجازی تبلیغ کنید.<br/>
@@ -90,7 +88,7 @@
                     {{Jdate::fn('5')}}-  در پنل کاربری خود، آمار بازدید، سفارش و فروش خود را مشاهده کنید.درخواست دریافت وجه پورسانت ارسال کنید و صورتحسابهای مالی خود را پیگیری کنید.<br/>
                     {{Jdate::fn('6')}}-  توجه داشته باشید که تسویه حساب  حداقل به ازای هر {{Jdate::fn('10')}} فروش (به مبلغ {{Jdate::echoNum('60000')}} تومان) و حداکثر طی {{Jdate::fn('2')}} روز کاری خواهد بود
 
-                    <br/><br/><br/><div align="center">
+                    <br/> <br/><div align="center">
                     <button onclick="$('#btns').slideUp(300);$('#regFrm').slideDown(300)" class="btn btn-primary">ثبت نام</button>
                     <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ورود</button>
                     </div>

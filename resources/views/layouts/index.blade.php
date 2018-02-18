@@ -6,6 +6,21 @@
     <meta name="language" content="en" />
     <meta name="csrf-token" content="<?php echo csrf_token() ?>"/>
     <title>هوشیار سازه</title>
+    <meta name="description" content="smartstick,هوشیار سازه,اسباب بازی فکری جدید و متفاوت,قیمت">
+    <meta property="og:locale" content="fa_IR" />
+    <!--
+    <meta itemprop="latitude" content="35.737316" />
+    <meta itemprop="longitude" content="51.376285" />
+    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://www.smartstick.ir/data1/images/2.jpg"/>
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:site_name" content="هوشیار سازه">
+    <meta property="og:title" content="خلاقانه | هوشمند | اسباب بازی فکری"/>
+    <meta property="og:description" content="smartstick,هوشیار سازه,اسباب بازی فکری جدید و متفاوت,قیمت"/>
+    <meta property="og:type" content="toy store"/>
+    <meta property="og:url" content="http://www.smartstick.ir"/>
+    <meta property="og:site_name" content="اسباب بازی هوشیار سازه"/>
     <link rel="icon" type="image/png" href="favicon.png"  />
     <link rel="stylesheet" type="text/css" href="{{asset('engine1/style.css')}}" />
     <script type="text/javascript" src="{{asset('engine1/jquery.js')}}"></script>
@@ -74,16 +89,15 @@
 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
 <div class="container"  id="AdminDiv">
-    <table align="center" width="1100px" >
+    <table align="center" width="1000px" >
 
         <tr dir="rtl">
             <td style="padding: 10px; background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top">
                 <div id="btns" class="btns">
                     <div align="center" style="font-weight: 900; color: #e02222; font-size: 26px">هوشیار سازه</div>
-                    <br/>
-                    <div align="center"  style="font-size: 16px; font-weight: bold">  اشکال هندسی ساده برای خلق هزاران سازه شگفت انگیز و پیچیده</div><br/>
-                    <div align="center"  style="font-size: 16px; font-weight: bold"> {{Jdate::fn('260')}} قطعه در {{Jdate::fn('9')}} شکل مختلف و در رنگهای متنوع</div>
-                    <div align="center"  style="font-size: 16px; font-weight: bold"> قیمت فقط {{Jdate::echoNum('20000')}} تومان</div><br/>
+
+                    <div align="center"  style="font-size: 14px; font-weight: bold">  اشکال هندسی ساده برای خلق هزاران سازه شگفت انگیز و پیچیده</div><br/>
+                    <div align="center"  style="font-size: 20px; font-weight: bold"> قیمت فقط {{Jdate::echoNum('20000')}} تومان</div><br/>
                     {{Jdate::fn('1')}}-  کلیه مراحل طراحی، مواد اولیه،تولید و بسته بندی در داخل کشور انجام شده و محصول صد در صد داخلی بوده و تقلبی ، وارداتی یا قاچاق نیست.<br/>
                     {{Jdate::fn('2')}}-  ساخته شده از پلاستیک با کیفیت بالا ، طبیعی، بدون بو، مستحکم و با ماندگاری بالا، مقاوم در برابر تغییر شکل<br/>
                     {{Jdate::fn('3')}}-  سبک و لطیف، با لبه های نرم به گونه ای که به کودک هیچ آسیبی نمیرساند و کودک میتواند به راحتی قطعات را با دست به یکدیگر بفشارد.<br/>
@@ -93,7 +107,7 @@
 
 
 
-                     <br/><br/><br/><div align="center">
+                     <br/><div align="center">
                     <button onclick="$('#btns').slideUp(300);$('#regFrm').slideDown(300)" class="btn btn-primary">ثبت سفارش</button>
                     <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ورود</button>
                     <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">ثبت اطلاعات پرداخت</button></div>

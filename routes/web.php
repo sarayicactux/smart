@@ -14,6 +14,8 @@
 
 
 Auth::routes();
+Route::get('/google', 'IndexController@google');
+Route::get('/googleNum/{num}', 'IndexController@googleNum');
 Route::get('/', 'visitController@index')->name('home');
 Route::get('/myUrl', 'visitController@myUrl');
 Route::get('/home', 'HomeController@index');

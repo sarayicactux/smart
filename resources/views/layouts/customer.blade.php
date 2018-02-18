@@ -72,7 +72,7 @@
 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
 <div class="container"  id="AdminDiv">
-    <table align="center">
+    <table align="center" width="1000px">
 
         <tr dir="rtl">
             <td style="padding: 10px; background-color:rgba(67,85,66,0.37);width: 460px; color: #ffffff; vertical-align: top"><div id="orderRep">
@@ -83,18 +83,16 @@
                         <div id="btns" class="btns">
 
                             <div align="center" style="font-weight: 900; color: #e02222; font-size: 26px">هوشیار سازه</div>
-                            <br/>
-                            <div align="center"  style="font-size: 16px; font-weight: bold">  اشکال هندسی ساده برای خلق هزاران سازه شگفت انگیز و پیچیده</div><br/>
-                            <div align="center"  style="font-size: 16px; font-weight: bold"> {{Jdate::fn('260')}} قطعه در {{Jdate::fn('9')}} شکل مختلف و در رنگهای متنوع</div>
-                            <div align="center"  style="font-size: 16px; font-weight: bold"> قیمت فقط {{Jdate::echoNum('20000')}} تومان</div><br/>
+                            <div align="center"  style="font-size: 14px; font-weight: bold">  اشکال هندسی ساده برای خلق هزاران سازه شگفت انگیز و پیچیده</div><br/>
+                            <div align="center"  style="font-size: 20px; font-weight: bold"> قیمت فقط {{Jdate::echoNum('20000')}} تومان</div><br/>
 
                             {{Jdate::fn('1')}}-  کلیه مراحل طراحی، مواد اولیه،تولید و بسته بندی در داخل کشور انجام شده و محصول صد در صد داخلی بوده و تقلبی ، وارداتی یا قاچاق نیست.<br/>
                             {{Jdate::fn('2')}}-  ساخته شده از پلاستیک با کیفیت بالا ، طبیعی، بدون بو، مستحکم و با ماندگاری بالا، مقاوم در برابر تغییر شکل<br/>
                             {{Jdate::fn('3')}}-  سبک و لطیف، با لبه های نرم به گونه ای که به کودک هیچ آسیبی نمیرساند و کودک میتواند به راحتی قطعات را با دست به یکدیگر بفشارد.<br/>
-                            {{Jdate::fn('4')}}-  رنگ های شاد و متنوع و اشگال هندسی گوناگون که انگیزش کودک در ساخت سازه های متنوع را در پی داشته که موجب القای حس خلاقیت و نو آوری به کودک میشود.<br/>
+                            {{Jdate::fn('4')}}-   {{Jdate::fn('260')}} قطعه در {{Jdate::fn('9')}} شکل مختلف و در رنگهای متنوع.<br/>
                             {{Jdate::fn('5')}}-  آموزش مفاهیم پایه ای: تشکیل شده از اشکال هندسی مربع، مثلث، دایره و اتصالات بلند و کوتاه که میتوان به کمک آنها سازه های نامحدودی را خلق کرد. همچنین به کمک آنها میتوان به کودک مفهوم شمارش و رنگ ها را آموزش داد.<br/>
                             {{Jdate::fn('6')}}-  توصیه شده برای کودکان سه سال و بالاتر
-                            <br/><br/><br/><div align="center">
+                            <br/><div align="center">
 
                     <button onclick="$('#btns').slideUp(300);$('#orderFrm').slideDown(300)" class="btn btn-primary">ثبت سفارش</button>
                                 <button onclick="$('#btns').slideUp(300);$('#loginFrm').slideDown(300)" class="btn btn-primary">پیگیری سفارش</button></div>
