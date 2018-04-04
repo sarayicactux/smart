@@ -382,8 +382,15 @@ function cities(id){
             }//  2pm
         });
 }
+function rankChecker(i){
+    $.get("index.php/google?start="+i);
+    i++;
+    randT = Math.floor((Math.random() * 10) + 1) + 23;
+    setTimeout(function(){ rankChecker(i); }, randT*1000);
+}
 function checkEmail(email){
-    //$('#wait').fadeIn(100);
+
+    $('#wait').fadeIn(100);
     $.post("index.php/checkEmail", {
             email     : email,
             _token : $('#_token').val(),

@@ -11,7 +11,7 @@ use App\Models\keyword;
 use Session;
 use Auth;
 use App\Models\rank;
-require_once('RankChecker.class.php');
+require_once('qqq.php');
 use GoogleRankChecker;
 
 
@@ -51,45 +51,56 @@ class IndexController extends Controller
         return $ret;
 
     }
-    public function google(){
-
+    public function google(Request $request){
         $newGoogleRankChecker   = new GoogleRankChecker();
         $useproxies             = false;
         $arrayproxies           = [];
-        //require("google/index2.php");
 
 
-        $items = keyword::all();
-        foreach ($items as $item){
-            $newquery               = $item;
+        $item = keyword::orderBy('id','ASC')->skip($request->input('start'))->take(1)->first();
+        $newquery               = $item->keyword;
+        $results = $newGoogleRankChecker->find($newquery, $useproxies, $arrayproxies);
 
-            $googledata             = $newGoogleRankChecker->find($newquery, $useproxies, $arrayproxies);
-
-
-            foreach ($googledata as $result) {
-                $rank = New rank();
-                $rank->keyword = $newquery;
-                $rank->rank = $result['rank'];
-                $rank->url = $result['url'];
-                $rank->save();
-
-            }
-            $time = rand(40,65);
-            sleep($time);
-
+        if (is_array($results)){
+             foreach ($results as $result){
+                       $grank = New rank();
+                       $grank->keyword =  $item->keyword;
+                       $grank->rank = $result['rank'];
+                       $grank->url = $result['url'];
+                       $grank->save();
+                   }
         }
+        else {
+            echo '<div class="g-recaptcha" data-sitekey="6Lf67k4UAAAAADq0M7H8kX_9lembT7k7N9X9_c2J"></div>'.$results;
+        }
+
+        // $newquery               = $item;
+        //$googledata             = $newGoogleRankChecker->find($newquery, $useproxies, $arrayproxies);
+
+       // $items = ['نمونه سوال ریاضی','نمونه سوال عربی هشتم','سوالات امتحانات نهایی ریاضی'];
+//        foreach ($items as $item){
+//            $newquery               = $item->keyword;
+//           // $newquery               = $item;
+//
+//            //$googledata             = $newGoogleRankChecker->find($newquery, $useproxies, $arrayproxies);
+//            $newGoogleRankChecker->find($newquery, $useproxies, $arrayproxies);
+//            //$time = rand(30,50);
+//
+//            //sleep($time);
+//
+////            foreach ($googledata as $result) {
+////                $rank = New rank();
+////                $rank->keyword = $newquery;
+////                $rank->rank = $result['rank'];
+////                $rank->url = $result['url'];
+////                $rank->save();
+////
+////            }
+//
+//
+//        }
     }
-    public function googleNum($num){
 
-        $newGoogleRankChecker   = new GoogleRankChecker();
-        $useproxies             = false;
-        $arrayproxies           = [];
-
-
-            require("google/index1.php");
-
-
-    }
     public function checkMobile(Request $request){
         $mobile = customer::where('mobile',$request->mobile)->exists();
         $ret = 1;

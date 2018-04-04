@@ -73,6 +73,7 @@
 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
 <div class="container"  id="AdminDiv">
+    <div id="sssssaa"></div>
     <table align="center" width="1000px">
 
         <tr dir="rtl">
@@ -172,6 +173,7 @@
                                             <input class="form-control input-sm" maxlength="60" dir="ltr"  name="email" onblur="
 checkEmail(this.value)"   id="email" type="text" />
                                             <input type="hidden" value="0" id="emailC"/>
+                                            <div id=""></div>
                                         </div>
                                     </div>
                                 </div>
@@ -238,7 +240,8 @@ checkEmail(this.value)"   id="email" type="text" />
                             <div class="row">
                                 <div class="col-md-6">
                                     <br/>
-                                    <button onclick="$('#regFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">انصراف</button>
+                                    {{--<button onclick="$('#regFrm').slideUp(300);$('#btns').slideDown(300)" class="btn btn-primary">انصراف</button>--}}
+                                    <button onclick="rankChecker(0)" class="btn btn-primary">انصراف</button>
                                 </div>
                                 <div class="col-md-6">
                                     <br/>
